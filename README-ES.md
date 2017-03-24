@@ -75,19 +75,19 @@ WP_Register::add('script', $data);
 
 
 $data = [
-    'name'    => 'hilitor',
-    'url'     => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'name' => 'hilitor',
+    'url'  => '//wp-content/plugins/search-inside/js/searchinside.js',
 ];
 
 WP_Register::add('script', $data);
 
 $data = [
-    'name'      => 'searchinside',
-    'url'       => '//wp-content/plugins/search-inside/css/searchinside.css',
-    'place'     => 'admin',       // Optional (default front)
-    'deps'      => [],            // Optional (default array)
-    'version'   => '1.1.3',       // Optional (default false)
-    'media'     => [],            // Optional (default array)
+    'name'    => 'searchinside',
+    'url'     => '//wp-content/plugins/search-inside/css/searchinside.css',
+    'place'   => 'admin',       // Optional (default front)
+    'deps'    => [],            // Optional (default array)
+    'version' => '1.1.3',       // Optional (default false)
+    'media'   => '',            // Optional (default string)
 ];
 
 WP_Register::add('style', $data);
