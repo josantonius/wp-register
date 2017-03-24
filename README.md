@@ -34,8 +34,8 @@ The previous command will only install the necessary files, if you prefer to dow
 
 Or you can also clone the complete repository with Git:
 
-	$ git clone https://github.com/Josantonius/WP_Register.git
-	
+    $ git clone https://github.com/Josantonius/WP_Register.git
+    
 ### Requirements
 
 This library is supported by PHP versions 5.6 or higher and is compatible with HHVM versions 3.0 or higher.
@@ -62,9 +62,9 @@ require __DIR__ . '/vendor/autoload.php';
 use Josantonius\WP_Register\WP_Register;
 
 $data = [
-	'name'    => 'searchinside',
-    'url'	  => '//wp-content/plugins/search-inside/js/searchinside.js',
-    'place'   => 'front',		// Optional (default front)
+    'name'    => 'searchinside',
+    'url'     => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'place'   => 'front',       // Optional (default front)
     'deps'    => ['jquery'],    // Optional (default array)
     'version' => '1.1.3',       // Optional (default false)
     'footer'  => true,          // Optional (default true)
@@ -75,19 +75,19 @@ WP_Register::add('script', $data);
 
 
 $data = [
-	'name'    => 'hilitor',
-    'url'	  => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'name'    => 'hilitor',
+    'url'     => '//wp-content/plugins/search-inside/js/searchinside.js',
 ];
 
 WP_Register::add('script', $data);
 
 $data = [
-	'name'      => 'searchinside',
-	'url'		=> '//wp-content/plugins/search-inside/css/searchinside.css',
-	'place'     => 'admin',		  // Optional (default front)
-	'deps'      => [],            // Optional (default array)
-	'version'   => '1.1.3',       // Optional (default false)
-	'media'	    => [],            // Optional (default array)
+    'name'      => 'searchinside',
+    'url'       => '//wp-content/plugins/search-inside/css/searchinside.css',
+    'place'     => 'admin',       // Optional (default front)
+    'deps'      => [],            // Optional (default array)
+    'version'   => '1.1.3',       // Optional (default false)
+    'media'     => [],            // Optional (default array)
 ];
 
 WP_Register::add('style', $data);

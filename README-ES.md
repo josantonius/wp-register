@@ -34,8 +34,8 @@ El comando anterior sólo instalará los archivos necesarios, si prefieres desca
 
 También puedes clonar el repositorio completo con Git:
 
-	$ git clone https://github.com/Josantonius/WP_Register.git
-	
+    $ git clone https://github.com/Josantonius/WP_Register.git
+    
 ### Requisitos
 
 Esta ĺibrería es soportada por versiones de PHP 5.6 o superiores y es compatible con versiones de HHVM 3.0 o superiores.
@@ -62,32 +62,32 @@ require __DIR__ . '/vendor/autoload.php';
 use Josantonius\WP_Register\WP_Register;
 
 $data = [
-	'name'    => 'searchinside',
-    'url'	  => '//wp-content/plugins/search-inside/js/searchinside.js',
-    'place'   => 'front',		// Opcional (Por defecto: front)
-    'deps'    => ['jquery'],    // Opcional (Por defecto: array)
-    'version' => '1.1.3',       // Opcional (Por defecto: false)
-    'footer'  => true,          // Opcional (Por defecto: true)
-    'params'  => [],            // Opcional (Por defecto: array)
+    'name'    => 'searchinside',
+    'url'     => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'place'   => 'front',       // Optional (default front)
+    'deps'    => ['jquery'],    // Optional (default array)
+    'version' => '1.1.3',       // Optional (default false)
+    'footer'  => true,          // Optional (default true)
+    'params'  => [],            // Optional (default array)
 ];
 
 WP_Register::add('script', $data);
 
 
 $data = [
-	'name'    => 'hilitor',
-    'url'	  => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'name'    => 'hilitor',
+    'url'     => '//wp-content/plugins/search-inside/js/searchinside.js',
 ];
 
 WP_Register::add('script', $data);
 
 $data = [
-	'name'      => 'searchinside',
-	'url'		=> '//wp-content/plugins/search-inside/css/searchinside.css',
-	'place'     => 'admin',		  // Opcional (Por defecto: front)
-	'deps'      => [],            // Opcional (Por defecto: array)
-	'version'   => '1.1.3',       // Opcional (Por defecto: false)
-	'media'	    => [],            // Opcional (Por defecto: array)
+    'name'      => 'searchinside',
+    'url'       => '//wp-content/plugins/search-inside/css/searchinside.css',
+    'place'     => 'admin',       // Optional (default front)
+    'deps'      => [],            // Optional (default array)
+    'version'   => '1.1.3',       // Optional (default false)
+    'media'     => [],            // Optional (default array)
 ];
 
 WP_Register::add('style', $data);
