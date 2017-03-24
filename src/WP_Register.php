@@ -1,147 +1,117 @@
-<?php 
+<?php
 /**
- * Register CSS and JavaScript resources.
+ * Search Inside Wordpress Plugin.
  * 
  * @author     Josantonius - hello@josantonius.com
  * @copyright  Copyright (c) 2017
- * @license    https://opensource.org/licenses/MIT - The MIT License (MIT)
- * @link       https://github.com/Josantonius/WP_Register
+ * @license    GPL-2.0+
+ * @link       https://github.com/Josantonius/WP-SearchInside.git
  * @since      1.0.0
  */
 
-namespace Josantonius\WP_Register;
+namespace SearchInside\Controller;
+
+use Josantonius\WP_Notice\WP_Notice,
+    Josantonius\WP_Register\WP_Register,
+    Eliasis\Controller\Controller,
+    Eliasis\App\App;
+
 
 /**
- * Register css and JavaScript resources.
+ * Plugin core, configurations and registration of principal methods.
  *
  * @since 1.0.0
  */
-class WP_Register {
+class Launcher extends Controller {
 
     /**
-     * Settings to register styles or scripts.
+     * Establish routes and load configurations and debug.
      *
      * @since 1.0.0
-     *
-     * @var array
      */
-    protected static $data;
+    public function __construct() {
+
+        add_shortcode('add-search-inside', 'addShortcode');
+
+        WP_Register::add('script', App::assets('js',  'searchinside'));
+        WP_Register::add('script', App::assets('js',  'hilitor'));
+        WP_Register::add('style',  App::assets('css', 'searchinside'));
+    }
 
     /**
-     * Add scripts or styles.
+     * Add shortcode.
+     * 
+     * @since 1.1.2
      *
+     * @return string → html div tag
+     */
+    private static function addShortcode() {
+
+        return '<div id="search-inside-sc"></div>';
+    }
+
+    /**
+     * Load default settings.
+     * 
+     * @since 1.0.0
+     */
+    public static function init() {
+
+
+    }
+
+
+
+
+
+    /**
+     * Hook plugin activation. | Executed only when activating the plugin.
+     * 
      * @since 1.0.0
      *
-     * @param string  $type → script | style
-     * @param array   $data → extra settings
-     *
-     *        string  $data['name']    = 'searchinside';
-     *        string  $data['url']     = 'plugins/name/js/searchinside.js';
-     *        string  $data['place']   = 'front';    (optional)
-     *        array   $data['deps']    = ['jquery']; (optional)
-     *        string  $data['version'] = '1.0.0';    (optional)
-     *        boolean $data['footer']  = true;       (optional - for scripts)
-     *        array   $data['params']  = [];         (optional - for scripts)
-     *        string  $data['media']   = 'all';      (optional - for styles)
-     *
-     * @return boolean
+     * @uses check_admin_referer() → user was referred from another admin page
+     * @uses get_option()          → option value based on an option name
+     * @uses add_option()          → add a new option to Wordpress options
+     * @uses update_option()       → update a named option/value
+     * @uses flush_rewrite_rules() → remove rewrite rules and then recreate news
      */
-    public static function add($type, $data = []) {
+    public function activation() {
 
-        $type = ucfirst($type);   
+        $plugin = isset( $_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
 
-        $data['name']    = (isset($data['name']))    ? $data['name']    : '';
-        $data['url']     = (isset($data['url']))     ? $data['url']     : '';
-        $data['deps']    = (isset($data['deps']))    ? $data['deps']    : [];
-        $data['version'] = (isset($data['version'])) ? $data['version'] : 0;
-        $data['media']   = (isset($data['media']))   ? $data['media']   : '';
+        check_admin_referer("activate-plugin_{$plugin}");
 
-        if ($type === 'script') {
+        $actualVersion = self::get_option('version');
 
-            $params = [
-                'pliginUrl' => WP_PLUGIN_URL,
-                'nonce'     => wp_create_nonce(self::$data['name'] . '-nonce')
-            ];
+        if (!$installed_version = get_option('searchinside_version')) {
 
-            $data['footer'] = (isset($data['footer'])) ? $data['footer'] : 1;
-            $data['params'] = (isset($data['params'])) ? $data['params'] : [];
-
-            $data['params'] = array_merge($data['params'], $params);
-        }
-
-        self::$data = $data;
-
-        $isAdmin = is_admin();
-
-        $place = (isset($data['place'])) ? $data['place'] : 'front';
-
-        if ($isAdmin && $place === 'admin') {
-
-            #add_action('wp_enqueue_scripts', array($instance, $type));
-        
-        } else if (!$isAdmin && $place === 'front') {) {
-
-            add_action('wp_enqueue_scripts', __CLASS__ .'::add'.$type);
+            add_option('searchinside_version', $actualVersion);
         
         } else {
 
-            return false;
+            if ($installed_version < $actualVersion) {
+
+                update_option('searchinside_version', $actualVersion);
+            }
         }
 
-        return true;
+        flush_rewrite_rules();
     }
 
     /**
-     * Add scripts.
-     *
+     * Hook plugin deactivation. Executed when deactivating the plugin.
+     * 
      * @since 1.0.0
      *
-     * @uses wp_register_script() → registers a script
-     * @uses wp_enqueue_script()  → enqueue a script
-     * @uses wp_localize_script() → localizes a registered script
-     * @uses admin_url()          → URL to the admin area for the current site
-     * @uses wp_create_nonce()    → creates a cryptographic token
+     * @uses check_admin_referer()  → tests if the current request is valid 
+     * @uses flush_rewrite_rules()  → remove rewrite rules and then recreate news
      */
-    protected static function addScript() {
+    public function deactivation() {
 
-        wp_register_script(
+        $plugin = isset($_REQUEST['plugin'] ) ? $_REQUEST['plugin'] : '';
 
-            self::$data['name'], 
-            self::$data['url'], 
-            self::$data['deps'], 
-            self::$data['version'], 
-            self::$data['footer']
-        );
+        check_admin_referer("deactivate-plugin_{$plugin}");
 
-        wp_enqueue_script(self::$data['name']);
-
-        wp_localize_script(
-
-            self::$data['name'], 
-            self::$data['name'], 
-            self::$data['params']
-        );
-    }
-
-    /**
-     * Add styles.
-     *
-     * @since 1.0.0
-     *
-     * @uses wp_enqueue_script() → enqueue a script
-     * @uses wp_register_style() → register a CSS stylesheet
-     */
-    protected static function addStyle() {
-
-        wp_register_style(
-
-            self::$data['name'], 
-            self::$data['url'], 
-            self::$data['deps'], 
-            self::$data['version'], 
-            self::$data['media']
-        );
-
-        wp_enqueue_style(self::$data['name']);
+        flush_rewrite_rules();
     }
 }
