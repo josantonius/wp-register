@@ -75,7 +75,7 @@ class WP_Register {
 
         $type = ucfirst($type); 
 
-        add_action('wp_enqueue_scripts', __CLASS__ .'::add'.$type);
+        add_action('wp_enqueue_scripts', __CLASS__ .'::add' . $type . 's');
         
         return true;
     }
@@ -91,7 +91,7 @@ class WP_Register {
      * @uses admin_url()          → URL to the admin area for the current site
      * @uses wp_create_nonce()    → creates a cryptographic token
      */
-    public static function addScript() {
+    public static function addScripts() {
 
         foreach (self::$data['script'] as $data) {
 
@@ -130,7 +130,7 @@ class WP_Register {
      * @uses wp_enqueue_script() → enqueue a script
      * @uses wp_register_style() → register a CSS stylesheet
      */
-    public static function addStyle() {
+    public static function addStyles() {
 
         foreach (self::$data['style'] as $data) {
 
