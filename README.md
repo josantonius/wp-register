@@ -12,7 +12,7 @@ Registro de recursos CSS y JavaScript en WordPress.
 - [Requirements](#requirements)
 - [Quick Start and Examples](#quick-start-and-examples)
 - [Usage](#usage)
-- [TODO](#todo)
+- [TODO](#-todo)
 - [Contribute](#contribute)
 - [Repository](#repository)
 - [Licensing](#licensing)

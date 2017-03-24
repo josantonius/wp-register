@@ -12,7 +12,7 @@ Carga de complemento de dominio de texto para traducciones.
 - [Requisitos](#requisitos)
 - [Cómo empezar y ejemplos](#cómo-empezar-y-ejemplos)
 - [Uso](#uso)
-- [TODO](#todo)
+- [TODO](#-todo)
 - [Contribuir](#contribuir)
 - [Repositorio](#repositorio)
 - [Licencia](#licencia)
