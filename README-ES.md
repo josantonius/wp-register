@@ -4,7 +4,7 @@
 
 [English version](README.md)
 
-Carga de complemento de dominio de texto para traducciones.
+Registro de recursos CSS y JavaScript en WordPress.
 
 ---
 

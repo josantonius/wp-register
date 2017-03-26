@@ -33,7 +33,7 @@ class WP_Register {
      * @since 1.0.0
      *
      * @param string  $type → script | style
-     * @param array   $data → extra settings
+     * @param array   $data → settings
      *
      *        string  $data['name']    = 'searchinside';
      *        string  $data['url']     = 'plugins/name/js/searchinside.js';

@@ -4,7 +4,7 @@
 
 [Versión en español](README-ES.md)
 
-Registro de recursos CSS y JavaScript en WordPress.
+Registration of CSS and JavaScript resources in WordPress.
 
 ---
 
