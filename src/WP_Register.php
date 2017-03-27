@@ -54,6 +54,8 @@ class WP_Register {
         $data['version'] = (isset($data['version'])) ? $data['version'] :  0;
         $data['media']   = (isset($data['media']))   ? $data['media']   : '';
 
+        $data['name'] = preg_replace('/[^A-Za-z0-9]+/', '', $data['name']);
+        
         if ($type === 'script') {
 
             $data['footer'] = (isset($data['footer'])) ? $data['footer'] :  1;
@@ -73,10 +75,17 @@ class WP_Register {
             return false;
         }
 
-        $type = ucfirst($type); 
+        $type = ucfirst($type);
 
-        add_action('wp_enqueue_scripts', __CLASS__ .'::add' . $type . 's');
-        
+        $hook = ($isAdmin) ? 'admin_init' : 'wp_enqueue_scripts';
+
+        if (!isset(self::$data[$type][$hook])) {
+
+            self::$data[$type][$hook] = true;
+
+            add_action($hook, __CLASS__ .'::add' . $type . 's');
+        }
+
         return true;
     }
 
