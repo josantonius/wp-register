@@ -105,7 +105,7 @@ class WP_Register {
         foreach (self::$data['script'] as $data) {
 
             $params = [
-                'pluginUrl' => WP_PLUGIN_URL,
+                'pluginUrl' => WP_PLUGIN_URL . '\\',
                 'nonce'     => wp_create_nonce($data['name'] . '-nonce')
             ];
 
