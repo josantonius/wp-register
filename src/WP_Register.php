@@ -102,10 +102,12 @@ class WP_Register {
      */
     public static function addScripts() {
 
+        $DS = DIRECTORY_SEPARATOR;
+        
         foreach (self::$data['script'] as $data) {
 
             $params = [
-                'pluginUrl' => WP_PLUGIN_URL . '\\',
+                'pluginUrl' => WP_PLUGIN_URL . $DS,
                 'nonce'     => wp_create_nonce($data['name'] . '-nonce')
             ];
 
