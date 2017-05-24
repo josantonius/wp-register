@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.1 - 2017-05-24
+
+* The action hook was changed in the add() method.
+
 ## 1.0.0 - 2017-03-24
 
 * Added `Josantonius\WP_Register\WP_Register` class.

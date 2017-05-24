@@ -77,7 +77,7 @@ class WP_Register {
 
         $type = ucfirst($type);
 
-        $hook = ($isAdmin) ? 'admin_init' : 'wp_enqueue_scripts';
+        $hook = ($isAdmin) ? 'admin_enqueue_scripts' : 'wp_enqueue_scripts';
 
         if (!isset(self::$data[$type][$hook])) {
 
