@@ -68,7 +68,7 @@ class WP_Register {
 
         if ($isAdmin && $place == 'admin' || !$isAdmin && $place == 'front') {
 
-            self::$data[$type][] = $data;
+            self::$data[$type][$data['name']] = $data;
 
         } else {
 
@@ -101,13 +101,11 @@ class WP_Register {
      * @uses wp_create_nonce()    → creates a cryptographic token
      */
     public static function addScripts() {
-
-        $DS = DIRECTORY_SEPARATOR;
         
         foreach (self::$data['script'] as $data) {
 
             $params = [
-                'pluginUrl' => WP_PLUGIN_URL . $DS,
+                'pluginUrl' => WP_PLUGIN_URL . '/',
                 'nonce'     => wp_create_nonce($data['name'] . '-nonce')
             ];
 
@@ -156,5 +154,33 @@ class WP_Register {
 
             wp_enqueue_style($data['name']);
         }
+    }
+
+    /**
+     * Check if a particular style or script has been added to be enqueued.
+     *
+     * @since 1.0.1
+     *
+     * @param string $type → script | style
+     * @param array  $name → script or style name
+     *
+     * @return boolean
+     */
+    public static function isSet($type, $name) {
+
+        return (in_array($name, self::$data[$type][$name])) ? true : false;
+    }
+
+    /**
+     * Remove before script or style have been enqueued.
+     *
+     * @since 1.0.1
+     *
+     * @param string $type → script | style
+     * @param array  $name → script or style name
+     */
+    public static function remove($type, $name) {
+
+        unset(self::$data[$type][$name]);
     }
 }

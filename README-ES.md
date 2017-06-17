@@ -20,7 +20,7 @@ Registro de recursos CSS y JavaScript en WordPress.
 
 ---
 
-### Instalación 
+## Instalación 
 
 La mejor forma de instalar esta extensión es a través de [composer](http://getcomposer.org/download/).
 
@@ -36,13 +36,13 @@ También puedes clonar el repositorio completo con Git:
 
     $ git clone https://github.com/Josantonius/WP_Register.git
     
-### Requisitos
+## Requisitos
 
-Esta ĺibrería es soportada por versiones de PHP 5.6 o superiores y es compatible con versiones de HHVM 3.0 o superiores.
+Esta biblioteca es soportada por versiones de PHP 5.6 o superiores y es compatible con versiones de HHVM 3.0 o superiores.
 
 Para utilizar esta librería en HHVM (HipHop Virtual Machine) tendrás que activar los tipos escalares. Añade la siguiente ĺínea "hhvm.php7.scalar_types = true" en tu "/etc/hhvm/php.ini".
 
-### Cómo empezar y ejemplos
+## Cómo empezar y ejemplos
 
 Para utilizar esta librería, simplemente:
 
@@ -51,7 +51,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Josantonius\WP_Register\WP_Register;
 ```
-### Uso
+## Uso
 
 Ejemplo de uso para esta librería:
 
@@ -60,44 +60,69 @@ Ejemplo de uso para esta librería:
 require __DIR__ . '/vendor/autoload.php';
 
 use Josantonius\WP_Register\WP_Register;
+```
 
+### Agregar script:
+
+```php
 $data = [
     'name'    => 'searchinside',
-    'url'     => '//wp-content/plugins/search-inside/js/searchinside.js',
-    'place'   => 'front',       // Optional (default front)
-    'deps'    => ['jquery'],    // Optional (default array)
-    'version' => '1.1.3',       // Optional (default false)
-    'footer'  => true,          // Optional (default true)
-    'params'  => [],            // Optional (default array)
+    'url'     => 'http://wp-content/plugins/search/js/searchinside.js',
+    'place'   => 'front',       // Optional (por defecto: front)
+    'deps'    => ['jquery'],    // Optional (por defecto: array)
+    'version' => '1.1.3',       // Optional (por defecto: false)
+    'footer'  => true,          // Optional (por defecto: true)
+    'params'  => [],            // Optional (por defecto: array)
 ];
 
 WP_Register::add('script', $data);
-
 
 $data = [
     'name' => 'hilitor',
-    'url'  => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'url'  => 'http://wp-content/plugins/search/js/searchinside.js',
 ];
 
 WP_Register::add('script', $data);
+```
 
+### Agregar estilos:
+
+```php
 $data = [
     'name'    => 'searchinside',
-    'url'     => '//wp-content/plugins/search-inside/css/searchinside.css',
-    'place'   => 'admin',       // Optional (default front)
-    'deps'    => [],            // Optional (default array)
-    'version' => '1.1.3',       // Optional (default false)
-    'media'   => '',            // Optional (default string)
+    'url'     => 'http://wp-content/plugins/search/css/searchinside.css',
+    'place'   => 'admin',       // Optional (por defecto: front)
+    'deps'    => [],            // Optional (por defecto: array)
+    'version' => '1.1.3',       // Optional (por defecto: false)
+    'media'   => '',            // Optional (por defecto: string)
 ];
 
 WP_Register::add('style', $data);
 ```
 
-### ☑ TODO
+### Comprueba si se ha añadido un estilo/script concreto para ser registrado.
+
+```php
+
+WP_Register::isSet('script', 'searchinside');  // Return true|false
+
+WP_Register::isSet('style',  'searchinside');  // Return true|false
+```
+
+### Eliminar antes de que el script/estilo se haya registrado:
+
+```php
+
+WP_Register::remove('script', 'searchinside');
+
+WP_Register::remove('style',  'searchinside');
+```
+
+## ☑ TODO
 
 - [ ] Agregar tests
 
-### Contribuir
+## Contribuir
 1. Comprobar si hay incidencias abiertas o abrir una nueva para iniciar una discusión en torno a un fallo o función.
 1. Bifurca la rama del repositorio en GitHub para iniciar la operación de ajuste.
 1. Escribe una o más pruebas para la nueva característica o expón el error.
@@ -106,15 +131,15 @@ WP_Register::add('style', $data);
 
 Esto está pensado para proyectos grandes y de larga duración.
 
-### Repositorio
+## Repositorio
 
 Los archivos de este repositorio se crearon y subieron automáticamente con [Reposgit Creator](https://github.com/Josantonius/BASH-Reposgit).
 
-### Licencia
+## Licencia
 
 Este proyecto está licenciado bajo **licencia MIT**. Consulta el archivo [LICENSE](LICENSE) para más información.
 
-### Copyright
+## Copyright
 
 2017 Josantonius, [josantonius.com](https://josantonius.com/)
 

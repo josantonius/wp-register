@@ -20,7 +20,7 @@ Registration of CSS and JavaScript resources in WordPress.
 
 ---
 
-### Installation
+## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
@@ -36,13 +36,13 @@ Or you can also clone the complete repository with Git:
 
     $ git clone https://github.com/Josantonius/WP_Register.git
     
-### Requirements
+## Requirements
 
 This library is supported by PHP versions 5.6 or higher and is compatible with HHVM versions 3.0 or higher.
 
 To use this library in HHVM (HipHop Virtual Machine) you will have to activate the scalar types. Add the following line "hhvm.php7.scalar_types = true" in your "/etc/hhvm/php.ini".
 
-### Quick Start and Examples
+## Quick Start and Examples
 
 To use this class, simply:
 
@@ -51,7 +51,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Josantonius\WP_Register\WP_Register;
 ```
-### Usage
+## Usage
 
 Example of use for this library:
 
@@ -60,10 +60,14 @@ Example of use for this library:
 require __DIR__ . '/vendor/autoload.php';
 
 use Josantonius\WP_Register\WP_Register;
+```
 
+### Add script:
+
+```php
 $data = [
     'name'    => 'searchinside',
-    'url'     => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'url'     => 'http://wp-content/plugins/search/js/searchinside.js',
     'place'   => 'front',       // Optional (default front)
     'deps'    => ['jquery'],    // Optional (default array)
     'version' => '1.1.3',       // Optional (default false)
@@ -73,17 +77,20 @@ $data = [
 
 WP_Register::add('script', $data);
 
-
 $data = [
     'name' => 'hilitor',
-    'url'  => '//wp-content/plugins/search-inside/js/searchinside.js',
+    'url'  => 'http://wp-content/plugins/search/js/searchinside.js',
 ];
 
 WP_Register::add('script', $data);
+```
 
+### Add style:
+
+```php
 $data = [
     'name'    => 'searchinside',
-    'url'     => '//wp-content/plugins/search-inside/css/searchinside.css',
+    'url'     => 'http://wp-content/plugins/search/css/searchinside.css',
     'place'   => 'admin',       // Optional (default front)
     'deps'    => [],            // Optional (default array)
     'version' => '1.1.3',       // Optional (default false)
@@ -93,11 +100,29 @@ $data = [
 WP_Register::add('style', $data);
 ```
 
-### ☑ TODO
+### Check if a particular style or script has been added to be enqueued:
+
+```php
+
+WP_Register::isSet('script', 'searchinside');  // Return true|false
+
+WP_Register::isSet('style',  'searchinside');  // Return true|false
+```
+
+### Remove before script or style have been enqueued:
+
+```php
+
+WP_Register::remove('script', 'searchinside');
+
+WP_Register::remove('style',  'searchinside');
+```
+
+## ☑ TODO
 
 - [ ] Add tests
 
-### Contribute
+## Contribute
 1. Check for open issues or open a new issue to start a discussion around a bug or feature.
 1. Fork the repository on GitHub to start making your changes.
 1. Write one or more tests for the new feature or that expose the bug.
@@ -106,15 +131,15 @@ WP_Register::add('style', $data);
 
 This is intended for large and long-lived objects.
 
-### Repository
+## Repository
 
 All files in this repository were created and uploaded automatically with [Reposgit Creator](https://github.com/Josantonius/BASH-Reposgit).
 
-### Licensing
+## Licensing
 
 This project is licensed under **MIT license**. See the [LICENSE](LICENSE) file for more info.
 
-### Copyright
+## Copyright
 
 2017 Josantonius, [josantonius.com](https://josantonius.com/)
 
