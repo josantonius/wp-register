@@ -20,6 +20,16 @@ Registro de recursos CSS y JavaScript en WordPress.
 
 ---
 
+<p align="center"><strong>Echa un vistazo al código</strong></p>
+
+<p align="center">
+  <a href="" title="Echa un vistazo al código">
+    <img src="https://raw.githubusercontent.com/Josantonius/PHP-Algorithm/master/resources/youtube-thumbnail.jpg">
+  </a>
+</p>
+
+---
+
 ## Instalación 
 
 La mejor forma de instalar esta extensión es a través de [composer](http://getcomposer.org/download/).
