@@ -159,14 +159,14 @@ class WP_Register {
     /**
      * Check if a particular style or script has been added to be enqueued.
      *
-     * @since 1.0.1
+     * @since 1.0.3
      *
      * @param string $type → script | style
      * @param array  $name → script or style name
      *
      * @return boolean
      */
-    public static function isSet($type, $name) {
+    public static function isEnqueued($type, $name) {
 
         return (in_array($name, self::$data[$type][$name])) ? true : false;
     }

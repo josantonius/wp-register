@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.3 - 2017-08-04
+
+* Changed `Josantonius\WP_Register\WP_Register::isSet()` method to `Josantonius\WP_Register\WP_Register::isEnqueued()` method.
+
 ## 1.0.2 - 2017-06-17
 
 * Now if two equal style/scripts are added, will be overwritten and only the last one will be added.
