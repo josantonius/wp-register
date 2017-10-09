@@ -39,13 +39,30 @@ final class UnifyFiles extends \WP_UnitTestCase {
 
         parent::setUp();
 
-        $this->themeUrl = get_theme_root_uri() . '/twentytwelve/';
+        $this->themeUrl = get_theme_root_uri() . '/tests/';
     }
 
     /**
      * Unify files specifying the same url path for styles and scripts.
      *
      * @since 1.0.4
+     *
+     * @return void
+     */
+    public function create() {
+        
+        if (!is_dir($this->themeUrl)) {
+
+            mkdir($this->themeUrl, 0777, true);
+        }
+    }
+
+    /**
+     * Unify files specifying the same url path for styles and scripts.
+     *
+     * @since 1.0.4
+     *
+     * @depends create
      *
      * @return void
      */

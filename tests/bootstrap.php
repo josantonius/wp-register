@@ -24,7 +24,7 @@ require_once $testDir . '/includes/functions.php';
 
 function _manually_load_environment() {
 
-    switch_theme('twentythirteen');
+    switch_theme('twentyseventeen');
 
     //require dirname( dirname( __FILE__ ) ) . '/sample-plugin.php';
 }

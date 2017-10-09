@@ -12,10 +12,6 @@
          bootstrap="tests/bootstrap.php"
 >
 
-    <php>
-        <env name="PLUGIN_FILE" value="plugin.php"/>
-    </php>
-
     <testsuites>
         <testsuite name="WP_Register Test Suite">
             <file>tests/WP_Register/Test/UnifyFiles.php</file>
