@@ -1,32 +1,24 @@
 # PHP WordPress Register
 
-[![Latest Stable Version](https://poser.pugx.org/josantonius/wp_register/v/stable)](https://packagist.org/packages/josantonius/wp_register) [![Total Downloads](https://poser.pugx.org/josantonius/wp_register/downloads)](https://packagist.org/packages/josantonius/wp_register) [![Latest Unstable Version](https://poser.pugx.org/josantonius/wp_register/v/unstable)](https://packagist.org/packages/josantonius/wp_register) [![License](https://poser.pugx.org/josantonius/wp_register/license)](https://packagist.org/packages/josantonius/wp_register)
+[![Latest Stable Version](https://poser.pugx.org/josantonius/wp_register/v/stable)](https://packagist.org/packages/josantonius/wp_register) [![Total Downloads](https://poser.pugx.org/josantonius/wp_register/downloads)](https://packagist.org/packages/josantonius/wp_register) [![Latest Unstable Version](https://poser.pugx.org/josantonius/wp_register/v/unstable)](https://packagist.org/packages/josantonius/wp_register) [![License](https://poser.pugx.org/josantonius/wp_register/license)](https://packagist.org/packages/josantonius/wp_register) [![Travis](https://travis-ci.org/Josantonius/WP_Register.svg)](https://travis-ci.org/Josantonius/WP_Register)
 
 [Versión en español](README-ES.md)
 
-Registration of CSS and JavaScript resources in WordPress.
+Register, minify and unify CSS and JavaScript resources in WordPress.
 
 ---
 
 - [Installation](#installation)
 - [Requirements](#requirements)
 - [Quick Start and Examples](#quick-start-and-examples)
+- [Available Methods](#available-methods)
 - [Usage](#usage)
+- [Tests](#tests)
 - [TODO](#-todo)
 - [Contribute](#contribute)
 - [Repository](#repository)
 - [License](#license)
 - [Copyright](#copyright)
-
----
-
-<p align="center"><strong>Take a look at the code</strong></p>
-
-<p align="center">
-  <a href="https://youtu.be/DOtoQgS4Ilg" title="Take a look at the code">
-    <img src="https://raw.githubusercontent.com/Josantonius/PHP-Algorithm/master/resources/youtube-thumbnail.jpg">
-  </a>
-</p>
 
 ---
 
@@ -61,6 +53,75 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Josantonius\WP_Register\WP_Register;
 ```
+
+### Available Methods
+
+Available methods in this library:
+
+#### add()
+Add scripts or styles.
+```php
+WP_Register::add($type, $data);
+```
+
+| Atttribute | Description | Type | Required | Default
+| --- | --- | --- | --- | --- |
+| $type | 'script' or 'style' | string | Yes | |
+
+| Atttribute | key | Description | Type | Required | Default
+| --- | --- | --- | --- | --- | --- |
+| $data | | Settings | array | Yes | |
+|  | name | Unique ID | string | Yes | |
+|  | url | Url to file | string | Yes | |
+|  | place | 'admin' or 'front'  | string | No | 'front' |
+|  | deps | Dependences | array | No | [] |
+|  | version | Version | string | No | false |
+|  | footer | **Only for scripts** - Attach in footer | boolean | No | true |
+|  | params | **Only for scripts** - Params available in JS | array | Yes | [] |
+|  | media | **Only for styles** - Media | string | No | '' |
+
+**@return** → void  
+
+#### unify()
+Sets whether to merge the content of files into a single file.
+```php
+WP_Register::unify($id, $params, $minify);
+```
+
+| Atttribute | Description | Type | Required | Default
+| --- | --- | --- | --- | --- |
+| $id | Action hook name | string | Yes | |
+| $params | Path urls | mixed | Yes | |
+| $minify | Minimize file content | boolean | No | false |
+
+**@return** → boolean true
+
+#### isAdded()
+Check if a particular style or script has been added to be enqueued.
+```php
+WP_Register::isAdded($type, $name);
+```
+
+| Atttribute | Description | Type | Required | Default
+| --- | --- | --- | --- | --- |
+| $type | 'script' or 'style' | string | Yes | |
+| $name | Script or style ID | string | Yes | |
+
+**@return** → boolean 
+
+#### remove()
+Remove before script or style have been registered.
+```php
+WP_Register::isAdded($type, $name);
+```
+
+| Atttribute | Description | Type | Required | Default
+| --- | --- | --- | --- | --- |
+| $type | 'script' or 'style' | string | Yes | |
+| $name | Script or style ID | string | Yes | |
+
+**@return** → boolean true
+
 ## Usage
 
 Example of use for this library:
@@ -72,67 +133,129 @@ require __DIR__ . '/vendor/autoload.php';
 use Josantonius\WP_Register\WP_Register;
 ```
 
-### Add script:
+#### Add script:
 
 ```php
-$data = [
-    'name'    => 'searchinside',
-    'url'     => 'http://wp-content/plugins/search/js/searchinside.js',
-    'place'   => 'front',       // Optional (default front)
-    'deps'    => ['jquery'],    // Optional (default array)
-    'version' => '1.1.3',       // Optional (default false)
-    'footer'  => true,          // Optional (default true)
-    'params'  => [],            // Optional (default array)
-];
+WP_Register::add('script', [
 
-WP_Register::add('script', $data);
-
-$data = [
-    'name' => 'hilitor',
-    'url'  => 'http://wp-content/plugins/search/js/searchinside.js',
-];
-
-WP_Register::add('script', $data);
+    'name'  => 'HTML_script',
+    'url'   => 'http://josantonius.com/js/html5.js'
+]);
 ```
-
-### Add style:
 
 ```php
-$data = [
-    'name'    => 'searchinside',
-    'url'     => 'http://wp-content/plugins/search/css/searchinside.css',
-    'place'   => 'admin',       // Optional (default front)
-    'deps'    => [],            // Optional (default array)
-    'version' => '1.1.3',       // Optional (default false)
-    'media'   => '',            // Optional (default string)
-];
+WP_Register::add('script', [
 
-WP_Register::add('style', $data);
+    'name'    => 'NavigationScript',
+    'url'     => 'http://josantonius.com/js/navigation.js',
+    'place'   => 'admin',
+    'deps'    => ['jquery'],
+    'version' => '1.1.3',
+    'footer'  => true,
+    'params'  => ['date' => date('now')],
+]);
 ```
 
-### Check if a particular style or script has been added to be enqueued:
+#### Add style:
+
+```php
+WP_Register::add('style', [
+
+    'name'  => 'EditorStyle',
+    'url'   => 'http://josantonius.com/js/editor-style.css'
+]);
+```
+
+```php
+WP_Register::add('style', [
+
+    'name'    => 'DefaultStyle',
+    'url'     => 'http://josantonius.com/js/style.css',
+    'place'   => 'admin',
+    'deps'    => [],
+    'version' => '1.1.3',
+    'media'   => 'all'
+])
+```
+
+#### Unify:
+
+```php
+WP_Register::unify('UniqueID', 'http://josantonius.com/min/');
+```
+
+#### Unify and minify:
+
+```php
+WP_Register::unify('UniqueID', 'http://josantonius.com/min/', true);
+```
+
+#### Unify specifying different url paths for styles and scripts:
+
+```php
+WP_Register::unify('UniqueID', [
+
+    'styles'  => 'http://josantonius.com/min/css/',
+    'scripts' => 'http://josantonius.com/min/js/'
+]);
+```
+
+#### Unify and minify specifying different url paths for styles and scripts:
+
+```php
+WP_Register::unify('UniqueID', [
+
+    'styles'  => 'http://josantonius.com/min/css/',
+    'scripts' => 'http://josantonius.com/min/js/'
+]);
+```
+
+#### Check if a particular style or script has been added to be registered:
 
 ```php
 
-WP_Register::isSet('script', 'searchinside');  // Return true|false
+WP_Register::isAdded('script', 'HTML_script');
 
-WP_Register::isSet('style',  'searchinside');  // Return true|false
+WP_Register::isAdded('script', 'NavigationScript');
+
+WP_Register::isAdded('style', 'EditorStyle');
+
+WP_Register::isAdded('style', 'DefaultStyle');
 ```
 
-### Remove before script or style have been enqueued:
+#### Remove before script or style have been enqueued:
 
 ```php
 
-WP_Register::remove('script', 'searchinside');
+WP_Register::remove('script', 'HTML_script');
 
-WP_Register::remove('style',  'searchinside');
+WP_Register::remove('script', 'NavigationScript');
+
+WP_Register::remove('style', 'EditorStyle');
+
+WP_Register::remove('style', 'DefaultStyle');
 ```
 
-## ☑ TODO
+### Tests 
 
-- [ ] Add tests
+To run [tests](tests/Asset/Test) simply:
+
+    $ git clone https://github.com/Josantonius/WP_Register.git
+    
+    $ cd WP_Register
+
+    $ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS wordpress_test CHARACTER SET utf8 COLLATE utf8_general_ci; CREATE USER 'travis'@'127.0.0.1' IDENTIFIED BY ''; GRANT ALL ON phpunit.* TO 'travis'@'127.0.0.1'; FLUSH PRIVILEGES;"
+
+    $ phpunit
+
+### ☑ TODO
+
+- [ ] Sort dependencies when unifying parameters
+- [x] Create tests
+- [ ] Improve documentation
 
 ## Contribute
+
 1. Check for open issues or open a new issue to start a discussion around a bug or feature.
 1. Fork the repository on GitHub to start making your changes.
 1. Write one or more tests for the new feature or that expose the bug.

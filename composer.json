@@ -1,15 +1,20 @@
 {
     "name":        "josantonius/wp_register",
-    "version":     "1.0.3",
+    "version":     "1.0.4",
     "type":        "library",
-    "description": "Register css and JavaScript resources.",
+    "description": "Register, minify and unify CSS and JavaScript resources.",
     "keywords": [
-        "Wordpress",
-        "Register",
-        "Enqueue",
-        "Css",
-        "Js",
+        "WordPress",
+        "register",
+        "enqueue",
+        "CSS",
+        "JS",
         "Script",
+        "assets",
+        "minify CSS",
+        "unify CSS",
+        "minify JS",
+        "unify JS",
         "Style",
         "HHVM",
         "PHP"
@@ -24,6 +29,8 @@
         }
     ],
     "support": {
+        "issues": "https://github.com/josantonius/wp_register/issues",
+        "forum":  "http://stackoverflow.com/tags/josantonius/wp_register",
         "source": "https://github.com/josantonius/wp_register"
     },
     "config": {
@@ -33,14 +40,20 @@
     "require": {
         "php": "^5.6 || ^7.0"
     },
+    "require-dev": {
+        "phpunit/phpunit": "5.7.*"
+    },
     "autoload": {
         "psr-4": {
-            "Josantonius\\WP_Register\\": "src/"
+            "Josantonius\\WP_Register\\": "src/WP_Register/"
         }
     },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
         }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }

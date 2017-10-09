@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+         bootstrap="tests/bootstrap.php"
+>
+
+    <testsuites>
+        <testsuite name="WP_Register Test Suite">
+            <file>tests/WP_Register/Test/UnifyFiles.php</file>
+            <file>tests/WP_Register/Test/RegisterScriptsTest.php</file>
+            <file>tests/WP_Register/Test/RegisterStylesTest.php</file>
+            <file>tests/WP_Register/Test/RegisterAdminScriptsTest.php</file>
+            <file>tests/WP_Register/Test/RegisterAdminStylesTest.php</file>
+            <file>tests/WP_Register/Test/UnifyAdminFiles.php</file>
+
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>src/WP_Register</directory>
+        </whitelist>
+    </filter>
+</phpunit>
