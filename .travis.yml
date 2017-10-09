@@ -61,11 +61,14 @@ before_script:
       composer global require wp-coding-standards/wpcs
       phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
     fi
+  - composer self-update
+  - composer install
+  
 script:
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
-      phpunit
-      WP_MULTISITE=1 phpunit
+      composer test
+      WP_MULTISITE=1 composer test
     fi
   - |
     if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
