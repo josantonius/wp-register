@@ -38,23 +38,23 @@ matrix:
       env: WP_VERSION=latest
     - php: nightly
       env: WP_VERSION=latest
-  fast_finish: true
   allow_failures:
     - php: nightly
 
+
 before_script:
-  - composer self-update
-  - composer install
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
       bash bin/install-wp-tests.sh wordpress_test travis '' 127.0.0.1 $WP_VERSION
     fi
-  - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      composer global require wp-coding-standards/wpcs
-      phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
-    fi
 
 script:
   - composer test
+
+notifications:
+  email:
+    on_success: never
+
+branches:
+  only:
+    - master

@@ -250,6 +250,7 @@ Para ejecutar las [pruebas](tests/Asset/Test) simplemente:
 
 ### ☑ Tareas pendientes
 
+- [ ] Ordenar dependencias al unificar parámetros
 - [x] Completar tests
 - [ ] Mejorar la documentación
 
