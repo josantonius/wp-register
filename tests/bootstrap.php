@@ -13,13 +13,6 @@ $loader = require __DIR__ . '/../src/bootstrap.php';
 
 $loader->add('Josantonius\WP_Register\Test', __DIR__);
 
-$testsDir = getenv( 'WP_TESTS_DIR' );
-
-if (!$testsDir) {
-
-	$testsDir = '/tmp/wordpress-tests-lib';
-}
-
 define('PLUGIN_FILE', getenv('PLUGIN_FILE'));
 
 define('PLUGIN_FOLDER', basename( dirname( __DIR__ )));
@@ -31,7 +24,7 @@ $GLOBALS['wp_tests_options'] = [
   'active_plugins' => [PLUGIN_PATH],
 ];
 
-require_once $testsDir . '/includes/functions.php';
+require_once __DIR__ . '/wp-core-tests/includes/functions.php';
 
 function _manually_load_environment() {
 
@@ -42,4 +35,4 @@ function _manually_load_environment() {
 
 tests_add_filter('muplugins_loaded', '_manually_load_environment');
 
-require $testsDir . '/includes/bootstrap.php';
+require __DIR__ . '/wp-core-tests/includes/bootstrap.php';
