@@ -37,7 +37,7 @@ function _manually_load_environment() {
 
     switch_theme('twentythirteen');
 
-    require dirname( __DIR__ ) . '/'. PLUGIN_FILE;
+    //require dirname( __DIR__ ) . '/'. PLUGIN_FILE;
 }
 
 tests_add_filter('muplugins_loaded', '_manually_load_environment');
