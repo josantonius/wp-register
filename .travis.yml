@@ -20,6 +20,9 @@ cache:
   - composer
   - $HOME/.composer/cache
 
+env:
+  - WP_PROJECT_TYPE=plugin WP_VERSION=latest WP_MULTISITE=0 WP_TEST_URL=http://localhost:12000 WP_TEST_USER=test WP_TEST_USER_PASS=test
+
 matrix:
   include:
     - php: 7.1
@@ -43,12 +46,11 @@ matrix:
 
 
 before_script:
-  - |
-    if [[ ! -z "$WP_VERSION" ]] ; then
-      bash bin/install-wp-tests.sh wordpress_test travis '' 127.0.0.1 $WP_VERSION
-    fi
+  - git clone https://github.com/Koodimonni/wordpress-test-template wp-tests
+  - bash wp-tests/bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 
 script:
+  - phpcs --standard=WordPress ./**/*.php
   - composer test
 
 notifications:

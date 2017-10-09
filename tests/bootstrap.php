@@ -13,19 +13,33 @@ $loader = require __DIR__ . '/../src/bootstrap.php';
 
 $loader->add('Josantonius\WP_Register\Test', __DIR__);
 
-require_once __DIR__ . '/wp-core-tests/includes/functions.php';
+$testsDir = getenv( 'WP_TESTS_DIR' );
+
+if (!$testsDir) {
+
+	$testsDir = '/tmp/wordpress-tests-lib';
+}
+
+define('PLUGIN_FILE', getenv('PLUGIN_FILE'));
+
+define('PLUGIN_FOLDER', basename( dirname( __DIR__ )));
+
+define('PLUGIN_PATH', PLUGIN_FOLDER.'/'.PLUGIN_FILE);
+
+$GLOBALS['wp_tests_options'] = [
+
+  'active_plugins' => [PLUGIN_PATH],
+];
+
+require_once $testsDir . '/includes/functions.php';
 
 function _manually_load_environment() {
 
     switch_theme('twentythirteen');
 
-    $plugins_to_active = array(
-        __DIR__ . '/wp-core-tests/wordpress/wp-content/plugins/hello.php'
-    );
-
-    update_option('active_plugins', $plugins_to_active);
+    require dirname( __DIR__ ) . '/'. PLUGIN_FILE;
 }
 
 tests_add_filter('muplugins_loaded', '_manually_load_environment');
 
-require_once __DIR__ . '/wp-core-tests/includes/bootstrap.php';
+require $testsDir . '/includes/bootstrap.php';
