@@ -17,7 +17,7 @@ $testDir = getenv('WP_TESTS_DIR');
 
 if (!$testDir) {
 
-	$testDir = __DIR__ . '/wp-core-tests';
+	$testDir = '/tmp/wordpress-tests-lib';
 }
 
 require_once $testDir . '/includes/functions.php';
