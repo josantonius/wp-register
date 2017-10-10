@@ -2,7 +2,7 @@
 
 ## 1.0.4 - 2017-10-06
 
-* Added functionality to minify CSS/JS content and unify archivos into a single file.
+* Added functionality to minify CSS/JS content and unify files into a single file.
 
 * Unit tests supported by `PHPUnit` were added.
 
