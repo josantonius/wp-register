@@ -1,21 +1,13 @@
 {
-    "name":        "josantonius/wp_register",
-    "version":     "1.0.4",
+    "name":        "josantonius/file",
+    "version":     "1.1.4",
     "type":        "library",
-    "description": "Register, minify and unify CSS and JavaScript resources.",
+    "description": "PHP library for file management.",
     "keywords": [
-        "WordPress",
-        "register",
-        "enqueue",
-        "CSS",
-        "JS",
-        "Script",
-        "assets",
-        "minify CSS",
-        "unify CSS",
-        "minify JS",
-        "unify JS",
-        "Style",
+        "File",
+        "Search words in file",
+        "File handler",
+        "Strings",
         "HHVM",
         "PHP"
     ],
@@ -29,9 +21,9 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/josantonius/wp_register/issues",
-        "forum":  "http://stackoverflow.com/tags/josantonius/wp_register",
-        "source": "https://github.com/josantonius/wp_register"
+        "issues": "https://github.com/josantonius/php-file/issues",
+        "forum":  "http://stackoverflow.com/tags/josantonius/php-file",
+        "source": "https://github.com/josantonius/php-file"
     },
     "config": {
         "preferred-install": "dist"
@@ -41,11 +33,11 @@
         "php": "^5.6 || ^7.0"
     },
     "require-dev": {
-        "Josantonius/File": "^1.1.4"
-    },
+        "phpunit/phpunit": "5.7.*"
+    },    
     "autoload": {
         "psr-4": {
-            "Josantonius\\WP_Register\\": "src/WP_Register/"
+            "Josantonius\\File\\": "src/File/"
         }
     },
     "extra": {

@@ -10,7 +10,8 @@
  */
 namespace Josantonius\WP_Register\Test;
 
-use Josantonius\WP_Register\WP_Register;
+use Josantonius\WP_Register\WP_Register,
+    Josantonius\File\File;
 
 /**
  * Tests class for WP_Register library.
@@ -255,11 +256,21 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
             file_exists($this->themePath . 'min/admin/css/' . $css)
         );
 
+        $this->assertTrue(
+
+            (file_get_contents($this->themePath . 'min/admin/css/' . $css) == "body, h1, h2, h3, h4, h5, h6 {font-family: 'Open Sans', sans-serif;}body {font-size: 1.6em;line-height: 1.6;}body, h1, h2, h3, h4, h5, h6 {font-family: 'Open Sans', sans-serif;}body {font-size: 1.6em;line-height: 1.6;}")
+        );
+
         $js = sha1('html5.js' . 'navigation.js') . '.js';
         
         $this->assertTrue(
 
             file_exists($this->themePath . 'min/admin/js/' . $js)
+        );
+
+        $this->assertTrue(
+
+            (file_get_contents($this->themePath . 'min/admin/js/' . $js) == "function myFunction() {document.getElementById('myCheck').click();}$('p').click(function(){alert('The paragraph was clicked.');});")
         );
     }
 
@@ -383,6 +394,8 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
         wp_deregister_script('UniqueID');
         
         wp_dequeue_script('UniqueID');
+
+        File::deleteDirRecursively($this->themePath);
     }
 
     /**

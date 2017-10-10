@@ -62,7 +62,6 @@
 
 * Added `Josantonius\WP_Register\Test\RegisterScriptsTest` class.
 * Added `Josantonius\WP_Register\Test\RegisterScriptsTest->setUp()` method.
-* Added `Josantonius\WP_Register\Test\RegisterScriptsTest->testCorrectActiveTheme()` method.
 * Added `Josantonius\WP_Register\Test\RegisterScriptsTest->testAddFrontEndScript()` method.
 * Added `Josantonius\WP_Register\Test\RegisterScriptsTest->testAddFrontEndScriptWithoutName()` method.
 * Added `Josantonius\WP_Register\Test\RegisterScriptsTest->testAddFrontEndScriptWithoutUrl()` method.
@@ -78,7 +77,6 @@
 
 * Added `Josantonius\WP_Register\Test\RegisterStylesTest` class.
 * Added `Josantonius\WP_Register\Test\RegisterStylesTest->setUp()` method.
-* Added `Josantonius\WP_Register\Test\RegisterStylesTest->testCorrectActiveTheme()` method.
 * Added `Josantonius\WP_Register\Test\RegisterStylesTest->testAddFrontEndStyle()` method.
 * Added `Josantonius\WP_Register\Test\RegisterStylesTest->testAddFrontEndStyleWithoutName()` method.
 * Added `Josantonius\WP_Register\Test\RegisterStylesTest->testAddFrontEndStyleWithoutUrl()` method.
