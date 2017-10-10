@@ -38,7 +38,7 @@ matrix:
     - php: hhvm
       env: WP_VERSION=latest
     - php: nightly
-      env: WP_VERSION=phpcs
+      env: WP_VERSION=latest
   allow_failures:
     - php: nightly
 
