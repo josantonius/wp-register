@@ -53,7 +53,7 @@ before_script:
       if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
         composer global require "phpunit/phpunit=5.7.*"
       else
-        composer global require "phpunit/phpunit=5.7.*"
+        composer global require "phpunit/phpunit=4.8.*"
       fi
     fi
   - |
@@ -63,12 +63,12 @@ before_script:
     fi
   - composer self-update
   - composer install
-  
+
 script:
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
-      composer test
-      WP_MULTISITE=1 composer test
+      phpunit
+      WP_MULTISITE=1 phpunit
     fi
   - |
     if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
