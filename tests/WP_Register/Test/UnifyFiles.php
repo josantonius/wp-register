@@ -49,25 +49,8 @@ final class UnifyFiles extends \WP_UnitTestCase {
      *
      * @return void
      */
-    public function create() {
-        
-        if (!is_dir($this->themeUrl)) {
-
-            mkdir($this->themeUrl, 0777, true);
-        }
-    }
-
-    /**
-     * Unify files specifying the same url path for styles and scripts.
-     *
-     * @since 1.0.4
-     *
-     * @depends create
-     *
-     * @return void
-     */
     public function testUnify() {
-        
+
         $this->assertTrue(
 
             WP_Register::unify('UniqueID', $this->themeUrl . 'min/')
@@ -82,7 +65,7 @@ final class UnifyFiles extends \WP_UnitTestCase {
      * @return void
      */
     public function testUnifySpecifyingDifferentUrlPaths() {
-        
+
         $this->assertTrue(
 
             WP_Register::unify('UniqueID', [
@@ -142,7 +125,7 @@ final class UnifyFiles extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name' => 'EditorStyle',
-                'url'  => $this->themeUrl . 'editor-style.css',
+                'url'  => $this->themeUrl . 'css/editor-style.css',
                 'place'   => 'front',
                 'deps'    => [],
                 'version' => '1.1.3',
@@ -155,7 +138,7 @@ final class UnifyFiles extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'    => 'DefaultStyle',
-                'url'     => $this->themeUrl . 'style.css',
+                'url'     => $this->themeUrl . 'css/style.css',
                 'place'   => 'front',
                 'deps'    => [],
                 'version' => '1.1.3',

@@ -13,14 +13,13 @@ $loader = require __DIR__ . '/../src/bootstrap.php';
 
 $loader->add('Josantonius\WP_Register\Test', __DIR__);
 
-$testDir = getenv('WP_TESTS_DIR');
 
-if (!$testDir) {
 
-	$testDir = '/tmp/wordpress-tests-lib';
-}
+$WP_CORE_DIR = getenv('WP_CORE_DIR') ?: '/tmp/wordpress/';
 
-require_once $testDir . '/includes/functions.php';
+$WP_TESTS_DIR = getenv('WP_TESTS_DIR') ?: '/tmp/wordpress-tests-lib';
+
+require_once $WP_TESTS_DIR . '/includes/functions.php';
 
 function _manually_load_environment() {
 
@@ -31,4 +30,72 @@ function _manually_load_environment() {
 
 tests_add_filter('muplugins_loaded', '_manually_load_environment');
 
-require_once $testDir . '/includes/bootstrap.php';
+
+
+require_once $WP_TESTS_DIR . '/includes/bootstrap.php';
+
+
+
+createFiles();
+
+function createFiles($WP_CORE_DIR) {
+
+	$css = $WP_CORE_DIR . 'wp-content/themes/tests/css/';
+
+	$js = $WP_CORE_DIR . 'wp-content/themes/tests/js/';
+
+    if (!is_dir($css)) { mkdir($css, 0777, true); }
+
+    if (!is_dir($js)) { mkdir($js, 0777, true); }
+
+    if (!file_exists($css . 'editor-style.css')) {
+    	
+    	file_put_contents($css . 'editor-style.css', "
+			
+			body, h1, h2, h3, h4, h5, h6 {
+			 font-family: 'Open Sans', sans-serif;
+			}
+
+			body {
+			 font-size: 1.6em;
+			 line-height: 1.6;
+			}
+    	");
+    }
+
+    if (!file_exists($css . 'style.css')) {
+    	
+    	file_put_contents($css . 'style.css', "
+			
+			body, h1, h2, h3, h4, h5, h6 {
+			 font-family: 'Open Sans', sans-serif;
+			}
+
+			body {
+			 font-size: 1.6em;
+			 line-height: 1.6;
+			}
+    	");
+    }
+
+    if (!file_exists($js . 'html5.js')) {
+    	
+    	file_put_contents($js . 'html5.js', "
+			
+			function myFunction() {
+
+			    document.getElementById('myCheck').click();
+			}
+    	");
+    }
+
+    if (!file_exists($js . 'navigation.js')) {
+    	
+    	file_put_contents($js . 'navigation.js', "
+			
+			$('p').click(function(){
+			    alert('The paragraph was clicked.');
+			});
+    	");
+    }
+}
