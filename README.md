@@ -156,6 +156,12 @@ WP_Register::add('script', [
 ]);
 ```
 
+Additionally, a nonce is created for each script using its name. In this example, it will be accessible from JavaScript using `NavigationScript.nonce`.
+
+`wp_verify_nonce($nonce, 'NavigationScript');`
+
+In the case of scripts created from plugins, the path of the plugin directory is saved as a parameter. In this example, it will be accessible from JavaScript using `NavigationScript.pluginUrl`.
+
 #### Add style:
 
 ```php
@@ -244,7 +250,7 @@ To run [tests](tests/Asset/Test) simply:
     
     $ cd WP_Register
 
-    $ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS wordpress_test CHARACTER SET utf8 COLLATE utf8_general_ci; CREATE USER 'travis'@'127.0.0.1' IDENTIFIED BY ''; GRANT ALL ON phpunit.* TO 'travis'@'127.0.0.1'; FLUSH PRIVILEGES;"
+    $ bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
 
     $ phpunit
 
