@@ -439,7 +439,7 @@ class WP_Register {
      */
     protected static function getPathFromUrl($url) {
 
-        return get_home_path() . parse_url($url, PHP_URL_PATH);
+        return $_SERVER['DOCUMENT_ROOT'] . parse_url($url, PHP_URL_PATH);
     }
 
     /**

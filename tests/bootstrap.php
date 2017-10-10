@@ -13,9 +13,9 @@ $loader = require __DIR__ . '/../src/bootstrap.php';
 
 $loader->add('Josantonius\WP_Register\Test', __DIR__);
 
-$WP_CORE_DIR = getenv('WP_CORE_DIR') ?: '/tmp/wordpress/';
+$WP_CORE_DIR = '/tmp/wordpress/';
 
-$WP_TESTS_DIR = getenv('WP_TESTS_DIR') ?: '/tmp/wordpress-tests-lib';
+$WP_TESTS_DIR = '/tmp/wordpress-tests-lib';
 
 require_once $WP_TESTS_DIR . '/includes/functions.php';
 

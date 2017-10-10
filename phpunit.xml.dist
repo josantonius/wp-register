@@ -12,6 +12,10 @@
          bootstrap="tests/bootstrap.php"
 >
 
+    <php>
+        <server name='DOCUMENT_ROOT' value='/tmp/wordpress' />
+    </php>
+
     <testsuites>
         <testsuite name="WP_Register Test Suite">
             <file>tests/WP_Register/Test/UnifyFiles.php</file>
