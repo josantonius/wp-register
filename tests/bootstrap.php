@@ -36,7 +36,7 @@ require_once $WP_TESTS_DIR . '/includes/bootstrap.php';
 
 
 
-createFiles();
+createFiles($WP_CORE_DIR);
 
 function createFiles($WP_CORE_DIR) {
 
