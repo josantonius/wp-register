@@ -37,9 +37,11 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
      */
     public function setUp() {
 
-        parent::setUp();
+        $this->themeUrl = get_theme_root_uri() . '/tests/';
 
-        $this->themeUrl = get_theme_root_uri() . '/twentytwelve/';
+        $this->themePath = get_theme_root() . '/tests/';
+
+        set_current_screen('admin.php');
     }
 
     /**
@@ -53,7 +55,7 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
         
         $this->assertTrue(
 
-            WP_Register::unify('UniqueID', $this->themeUrl . 'min/')
+            WP_Register::unify('UniqueID', $this->themeUrl . 'min/admin/')
         );
     }
 
@@ -70,8 +72,8 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
 
             WP_Register::unify('UniqueID', [
 
-                'styles'  => $this->themeUrl . 'min/css/',
-                'scripts' => $this->themeUrl . 'min/js/'
+                'styles'  => $this->themeUrl . 'min/admin/css/',
+                'scripts' => $this->themeUrl . 'min/admin/js/'
             ])
         );
     }
@@ -87,7 +89,7 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
         
         $this->assertTrue(
 
-            WP_Register::unify('UniqueID', $this->themeUrl . 'min/', true)
+            WP_Register::unify('UniqueID', $this->themeUrl.'min/admin/', true)
         );
     }
 
@@ -104,8 +106,8 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
 
             WP_Register::unify('UniqueID', [
 
-                'styles'  => $this->themeUrl . 'min/css/',
-                'scripts' => $this->themeUrl . 'min/js/'
+                'styles'  => $this->themeUrl . 'min/admin/css/',
+                'scripts' => $this->themeUrl . 'min/admin/js/'
 
             ], true)
         );
@@ -125,7 +127,7 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name' => 'EditorStyleAdmin',
-                'url'  => $this->themeUrl . 'editor-style.css',
+                'url'  => $this->themeUrl . 'css/editor-style.css',
                 'place'   => 'admin',
                 'deps'    => [],
                 'version' => '1.1.3',
@@ -138,7 +140,7 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'    => 'DefaultStyleAdmin',
-                'url'     => $this->themeUrl . 'style.css',
+                'url'     => $this->themeUrl . 'css/style.css',
                 'place'   => 'admin',
                 'deps'    => [],
                 'version' => '1.1.3',
@@ -250,14 +252,14 @@ final class UnifyAdminFiles extends \WP_UnitTestCase {
 
         $this->assertTrue(
 
-            file_exists(get_theme_root() . '/twentytwelve/min/css/' . $css)
+            file_exists($this->themePath . 'min/admin/css/' . $css)
         );
 
         $js = sha1('html5.js' . 'navigation.js') . '.js';
         
         $this->assertTrue(
 
-            file_exists(get_theme_root() . '/twentytwelve/min/js/' . $js)
+            file_exists($this->themePath . 'min/admin/js/' . $js)
         );
     }
 

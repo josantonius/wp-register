@@ -37,9 +37,9 @@ final class RegisterAdminStylesTest extends \WP_UnitTestCase {
      */
     public function setUp() {
 
-        parent::setUp();
+        $this->themeUrl = get_theme_root_uri() . '/tests/';
 
-        $this->themeUrl = get_theme_root_uri() . '/twentytwelve/';
+        set_current_screen('admin.php');
     }
 
     /**
@@ -58,7 +58,7 @@ final class RegisterAdminStylesTest extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'  => 'EditorStyleAdmin',
-                'url'   => $this->themeUrl . 'editor-style.css',
+                'url'   => $this->themeUrl . 'css/editor-style.css',
                 'place' => 'admin'
             ])
         );
@@ -77,7 +77,7 @@ final class RegisterAdminStylesTest extends \WP_UnitTestCase {
 
             WP_Register::add('style', [
 
-                'url'   => $this->themeUrl . 'unknown.css',
+                'url'   => $this->themeUrl . 'css/unknown.css',
                 'place' => 'admin'
             ])
         );
@@ -118,7 +118,7 @@ final class RegisterAdminStylesTest extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'  => 'unknown',
-                'url'   => $this->themeUrl . 'unknown.css',
+                'url'   => $this->themeUrl . 'css/unknown.css',
                 'place' => 'front'
             ])
         );
@@ -138,7 +138,7 @@ final class RegisterAdminStylesTest extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'    => 'DefaultStyleAdmin',
-                'url'     => $this->themeUrl . 'style.css',
+                'url'     => $this->themeUrl . 'css/style.css',
                 'place'   => 'admin',
                 'deps'    => [],
                 'version' => '1.1.3',

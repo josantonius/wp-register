@@ -245,9 +245,14 @@ class WP_Register {
      */
     public static function remove($type, $name) {
         
-        unset(self::$data[$type][$name]);
+        if (isset(self::$data[$type][$name])) {
 
-        return true;
+            unset(self::$data[$type][$name]);
+
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -682,7 +687,7 @@ class WP_Register {
             $data['footer'] = self::unifyParams($type, 'footer',  false);
         }
 
-        self::$data[$type] = [$hash => $data];
+        self::$data[$type] = [$data['name'] => $data];
 
         return true;
     }

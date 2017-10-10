@@ -37,9 +37,9 @@ final class RegisterAdminScriptsTest extends \WP_UnitTestCase {
      */
     public function setUp() {
 
-        parent::setUp();
+        $this->themeUrl = get_theme_root_uri() . '/tests/';
 
-        $this->themeUrl = get_theme_root_uri() . '/twentytwelve/';
+        set_current_screen('admin.php');
     }
 
     /**
@@ -51,8 +51,6 @@ final class RegisterAdminScriptsTest extends \WP_UnitTestCase {
      */
     public function testAddAdminScript() {
         
-        set_current_screen('admin.php');
-
         $this->assertTrue(
 
             WP_Register::add('script', [

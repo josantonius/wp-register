@@ -37,21 +37,7 @@ final class RegisterScriptsTest extends \WP_UnitTestCase {
      */
     public function setUp() {
 
-        parent::setUp();
-
-        $this->themeUrl = get_theme_root_uri() . '/twentytwelve/';
-    }
-
-    /**
-     * Test correct active theme.
-     *
-     * @since 1.0.4
-     *
-     * @return void
-     */
-    public function testCorrectActiveTheme() {
-
-        $this->assertTrue('Twenty Thirteen' == wp_get_theme()->name);
+        $this->themeUrl = get_theme_root_uri() . '/tests/';
     }
 
     /**

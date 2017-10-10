@@ -37,21 +37,7 @@ final class RegisterStylesTest extends \WP_UnitTestCase {
      */
     public function setUp() {
 
-        parent::setUp();
-
-        $this->themeUrl = get_theme_root_uri() . '/twentytwelve/';
-    }
-
-    /**
-     * Test correct active theme.
-     *
-     * @since 1.0.4
-     *
-     * @return void
-     */
-    public function testCorrectActiveTheme() {
-
-        $this->assertTrue('Twenty Thirteen' == wp_get_theme()->name);
+        $this->themeUrl = get_theme_root_uri() . '/tests/';
     }
 
     /**
@@ -68,7 +54,7 @@ final class RegisterStylesTest extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'  => 'EditorStyle',
-                'url'   => $this->themeUrl . 'editor-style.css'
+                'url'   => $this->themeUrl . 'css/editor-style.css'
             ])
         );
     }
@@ -86,7 +72,7 @@ final class RegisterStylesTest extends \WP_UnitTestCase {
 
             WP_Register::add('style', [
 
-                'url'   => $this->themeUrl . 'unknown.css',
+                'url'   => $this->themeUrl . 'css/unknown.css',
                 'place' => 'front'
             ])
         );
@@ -125,7 +111,7 @@ final class RegisterStylesTest extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'  => 'unknown',
-                'url'   => $this->themeUrl . 'unknown.css',
+                'url'   => $this->themeUrl . 'css/unknown.css',
                 'place' => 'admin'
             ])
         );
@@ -145,7 +131,7 @@ final class RegisterStylesTest extends \WP_UnitTestCase {
             WP_Register::add('style', [
 
                 'name'    => 'DefaultStyle',
-                'url'     => $this->themeUrl . 'style.css',
+                'url'     => $this->themeUrl . 'css/style.css',
                 'place'   => 'front',
                 'deps'    => [],
                 'version' => '1.1.3',

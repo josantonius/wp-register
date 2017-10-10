@@ -37,9 +37,9 @@ final class UnifyFiles extends \WP_UnitTestCase {
      */
     public function setUp() {
 
-        parent::setUp();
-
         $this->themeUrl = get_theme_root_uri() . '/tests/';
+
+        $this->themePath = get_theme_root() . '/tests/';
     }
 
     /**
@@ -250,14 +250,24 @@ final class UnifyFiles extends \WP_UnitTestCase {
 
         $this->assertTrue(
 
-            file_exists(get_theme_root() . '/twentytwelve/min/css/' . $css)
+            file_exists($this->themePath . 'min/css/' . $css)
+        );
+
+        $this->assertTrue(
+
+            (file_get_contents($this->themePath . 'min/css/' . $css) == "body, h1, h2, h3, h4, h5, h6 {font-family: 'Open Sans', sans-serif;}body {font-size: 1.6em;line-height: 1.6;}body, h1, h2, h3, h4, h5, h6 {font-family: 'Open Sans', sans-serif;}body {font-size: 1.6em;line-height: 1.6;}")
         );
 
         $js = sha1('html5.js' . 'navigation.js') . '.js';
         
         $this->assertTrue(
 
-            file_exists(get_theme_root() . '/twentytwelve/min/js/' . $js)
+            file_exists($this->themePath . 'min/js/' . $js)
+        );
+        
+        $this->assertTrue(
+
+            (file_get_contents($this->themePath . 'min/js/' . $js) == "function myFunction() {document.getElementById('myCheck').click();}$('p').click(function(){alert('The paragraph was clicked.');});")
         );
     }
 
