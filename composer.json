@@ -34,6 +34,7 @@
         "source": "https://github.com/josantonius/wp_register"
     },
     "config": {
+        "vendor-dir": "lib/vendor",
         "preferred-install": "dist"
     },
     "minimum-stability": "stable",
