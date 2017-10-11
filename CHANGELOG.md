@@ -125,6 +125,7 @@
 * Added `WP_Register/src/bootstrap.php` file
 
 * Added `WP_Register/tests/bootstrap.php` file.
+* Added `WP_Register/tests/sample-plugin.php` file.
 
 * Added `WP_Register/phpunit.xml.dist` file.
 * Added `WP_Register/_config.yml` file.
