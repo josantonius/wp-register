@@ -1,6 +1,6 @@
 /tests export-ignore
 /src/bootstrap.php export-ignore
-/lib export-ignore
+/vendor export-ignore
 /bin export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbeed1820ad6aab827ea97f982e49fdc0
+class ComposerStaticInitd8941653e5cb290beb7e8f2db41cffcc
 {
     public static $prefixLengthsPsr4 = array (
         'J' => 
@@ -17,7 +17,7 @@ class ComposerStaticInitbeed1820ad6aab827ea97f982e49fdc0
     public static $prefixDirsPsr4 = array (
         'Josantonius\\WP_Register\\' => 
         array (
-            0 => __DIR__ . '/../../..' . '/src/WP_Register',
+            0 => __DIR__ . '/../..' . '/src/WP_Register',
         ),
         'Josantonius\\File\\' => 
         array (
@@ -28,8 +28,8 @@ class ComposerStaticInitbeed1820ad6aab827ea97f982e49fdc0
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbeed1820ad6aab827ea97f982e49fdc0::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbeed1820ad6aab827ea97f982e49fdc0::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd8941653e5cb290beb7e8f2db41cffcc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd8941653e5cb290beb7e8f2db41cffcc::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
