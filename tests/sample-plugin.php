@@ -9,19 +9,17 @@
  * @since      1.0.4
  */
 
+use Josantonius\File\File;
+
 createFiles();
 
 function createFiles() {
 
-	$css = WP_CORE_DIR . 'wp-content/themes/tests/css/';
+	File::createDir($css = WP_CORE_DIR . 'wp-content/themes/tests/css/');
 
-	$js = WP_CORE_DIR . 'wp-content/themes/tests/js/';
+	File::createDir($js = WP_CORE_DIR . 'wp-content/themes/tests/js/');
 
-    if (!is_dir($css)) { mkdir($css, 0777, true); }
-
-    if (!is_dir($js)) { mkdir($js, 0777, true); }
-
-    if (!file_exists($css . 'editor-style.css')) {
+    if (!File::exists($css . 'editor-style.css')) {
     	
     	file_put_contents($css . 'editor-style.css', "
 			
@@ -36,7 +34,7 @@ function createFiles() {
     	");
     }
 
-    if (!file_exists($css . 'style.css')) {
+    if (!File::exists($css . 'style.css')) {
     	
     	file_put_contents($css . 'style.css', "
 			
@@ -51,7 +49,7 @@ function createFiles() {
     	");
     }
 
-    if (!file_exists($js . 'html5.js')) {
+    if (!File::exists($js . 'html5.js')) {
     	
     	file_put_contents($js . 'html5.js', "
 			
@@ -62,7 +60,7 @@ function createFiles() {
     	");
     }
 
-    if (!file_exists($js . 'navigation.js')) {
+    if (!File::exists($js . 'navigation.js')) {
     	
     	file_put_contents($js . 'navigation.js', "
 			

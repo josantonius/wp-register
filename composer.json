@@ -38,7 +38,8 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": "^5.6 || ^7.0"
+        "php": "^5.6 || ^7.0",
+        "Josantonius/Json" : "^1.1.4"
     },
     "require-dev": {
         "Josantonius/File": "^1.1.4"

@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Josantonius\\WP_Register\\' => array($baseDir . '/src/WP_Register'),
+    'Josantonius\\Json\\' => array($vendorDir . '/josantonius/json/src/Json'),
     'Josantonius\\File\\' => array($vendorDir . '/josantonius/file/src/File'),
 );

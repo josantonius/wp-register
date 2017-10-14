@@ -10,6 +10,7 @@ class ComposerStaticInitd8941653e5cb290beb7e8f2db41cffcc
         'J' => 
         array (
             'Josantonius\\WP_Register\\' => 24,
+            'Josantonius\\Json\\' => 17,
             'Josantonius\\File\\' => 17,
         ),
     );
@@ -18,6 +19,10 @@ class ComposerStaticInitd8941653e5cb290beb7e8f2db41cffcc
         'Josantonius\\WP_Register\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/WP_Register',
+        ),
+        'Josantonius\\Json\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/josantonius/json/src/Json',
         ),
         'Josantonius\\File\\' => 
         array (

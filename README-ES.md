@@ -256,6 +256,7 @@ Para ejecutar las [pruebas](tests/Asset/Test) simplemente:
 
 ### ☑ Tareas pendientes
 
+- [ ] Implementar recolector de basura en archivos unificados
 - [ ] Ordenar dependencias al unificar parámetros
 - [x] Completar tests
 - [ ] Mejorar la documentación

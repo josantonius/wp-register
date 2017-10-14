@@ -256,6 +256,7 @@ To run [tests](tests/Asset/Test) simply:
 
 ### ☑ TODO
 
+- [ ] Implement garbage collector in unified files
 - [ ] Sort dependencies when unifying parameters
 - [x] Create tests
 - [ ] Improve documentation

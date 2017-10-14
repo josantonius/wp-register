@@ -1,17 +1,17 @@
 [
     {
-        "name": "josantonius/file",
+        "name": "josantonius/json",
         "version": "1.1.4",
         "version_normalized": "1.1.4.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/Josantonius/PHP-File.git",
-            "reference": "b1a7bc29e6b715bf13979efcf82dcd14e8397dcb"
+            "url": "https://github.com/Josantonius/PHP-Json.git",
+            "reference": "dd04ee52187aa1828d978a6f3a84eece1a8053cb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Josantonius/PHP-File/zipball/b1a7bc29e6b715bf13979efcf82dcd14e8397dcb",
-            "reference": "b1a7bc29e6b715bf13979efcf82dcd14e8397dcb",
+            "url": "https://api.github.com/repos/Josantonius/PHP-Json/zipball/dd04ee52187aa1828d978a6f3a84eece1a8053cb",
+            "reference": "dd04ee52187aa1828d978a6f3a84eece1a8053cb",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,65 @@
         "require-dev": {
             "phpunit/phpunit": "5.7.*"
         },
-        "time": "2017-09-14 21:33:47",
+        "time": "2017-09-29 22:25:33",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Josantonius\\Json\\": "src/Json/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Josantonius",
+                "email": "hello@josantonius.com",
+                "homepage": "https://josantonius.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP simple library for managing Json files.",
+        "keywords": [
+            "Array to file",
+            "File to array",
+            "JavaScript Object Notation",
+            "data exchange",
+            "hhvm",
+            "javascript",
+            "json",
+            "php"
+        ]
+    },
+    {
+        "name": "josantonius/file",
+        "version": "1.1.4",
+        "version_normalized": "1.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Josantonius/PHP-File.git",
+            "reference": "1912c2bd403db51d847834031d66d06e29147e37"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Josantonius/PHP-File/zipball/1912c2bd403db51d847834031d66d06e29147e37",
+            "reference": "1912c2bd403db51d847834031d66d06e29147e37",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "5.7.*"
+        },
+        "time": "2017-10-12 04:02:11",
         "type": "library",
         "extra": {
             "branch-alias": {
