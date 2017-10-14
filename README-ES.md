@@ -244,7 +244,7 @@ WP_Register::remove('style', 'DefaultStyle');
 
 ### Tests 
 
-Para ejecutar las [pruebas](tests/Asset/Test) simplemente:
+Para ejecutar las [pruebas](tests/WP_Register/Test) simplemente:
 
     $ git clone https://github.com/Josantonius/WP_Register.git
     
