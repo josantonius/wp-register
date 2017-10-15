@@ -131,6 +131,8 @@
 * Added `WP_Register/_config.yml` file.
 * Added `WP_Register/.travis.yml` file.
 
+* Added `WP_Register/bin/install-wp-tests.sh` file.
+
 ## 1.0.3 - 2017-08-04
 
 * Changed `Josantonius\WP_Register\WP_Register::isSet()` method to `Josantonius\WP_Register\WP_Register::isEnqueued()` method.

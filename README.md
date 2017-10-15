@@ -64,11 +64,11 @@ Add scripts or styles.
 WP_Register::add($type, $data);
 ```
 
-| Atttribute | Description | Type | Required | Default
+| Attribute | Description | Type | Required | Default
 | --- | --- | --- | --- | --- |
 | $type | 'script' or 'style' | string | Yes | |
 
-| Atttribute | key | Description | Type | Required | Default
+| Attribute | key | Description | Type | Required | Default
 | --- | --- | --- | --- | --- | --- |
 | $data | | Settings | array | Yes | |
 |  | name | Unique ID | string | Yes | |
@@ -88,7 +88,7 @@ Sets whether to merge the content of files into a single file.
 WP_Register::unify($id, $params, $minify);
 ```
 
-| Atttribute | Description | Type | Required | Default
+| Attribute | Description | Type | Required | Default
 | --- | --- | --- | --- | --- |
 | $id | Action hook name | string | Yes | |
 | $params | Path urls | mixed | Yes | |
@@ -102,7 +102,7 @@ Check if a particular style or script has been added to be enqueued.
 WP_Register::isAdded($type, $name);
 ```
 
-| Atttribute | Description | Type | Required | Default
+| Attribute | Description | Type | Required | Default
 | --- | --- | --- | --- | --- |
 | $type | 'script' or 'style' | string | Yes | |
 | $name | Script or style ID | string | Yes | |
@@ -115,7 +115,7 @@ Remove before script or style have been registered.
 WP_Register::isAdded($type, $name);
 ```
 
-| Atttribute | Description | Type | Required | Default
+| Attribute | Description | Type | Required | Default
 | --- | --- | --- | --- | --- |
 | $type | 'script' or 'style' | string | Yes | |
 | $name | Script or style ID | string | Yes | |

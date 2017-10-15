@@ -17,7 +17,7 @@ use Josantonius\WP_Register\WP_Register;
  * 
  * @since 1.0.4
  */
-final class UnifyFiles extends \WP_UnitTestCase { 
+final class UnifyFilesTest extends \WP_UnitTestCase { 
 
     /**
      * Theme url.
