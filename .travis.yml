@@ -33,6 +33,7 @@ matrix:
       env: WP_VERSION=latest
     - php: 7.1
       env: WP_VERSION=latest
+      env: PHPCS=WordPress
     - php: 7.0
       env: WP_VERSION=latest
     - php: 5.6

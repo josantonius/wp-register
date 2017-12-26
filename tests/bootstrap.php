@@ -17,6 +17,8 @@ require __DIR__ . '/../vendor/autoload.php';
  */
 function _manually_load_environment() {
 
+	require __DIR__ . '/../vendor/autoload.php';
+
 	switch_theme( 'twentyseventeen' );
 
 	require __DIR__ . '/sample-plugin.php';
