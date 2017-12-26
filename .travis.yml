@@ -33,7 +33,6 @@ matrix:
       env: WP_VERSION=latest
     - php: 7.1
       env: WP_VERSION=latest
-      env: PHPCS=PSR2
     - php: 7.0
       env: WP_VERSION=latest
     - php: 5.6
@@ -59,11 +58,8 @@ before_script:
     fi
 
 script:
-  - |
-    if [[ ! -z "$WP_VERSION" ]] ; then
-      phpunit
-      WP_MULTISITE=1 phpunit
-    fi
+  - phpunit
+  - WP_MULTISITE=1 phpunit
   - |
     if [[ "$PHPCS" ]] ; then
       phpcs --standard=phpcs.xml $(find . -name '*.php')

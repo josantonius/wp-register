@@ -10,6 +10,8 @@
  * @since      1.0.4
  */
 
+require __DIR__ . '/../vendor/autoload.php';
+
 /**
  * Load theme and plugins for testing environment.
  */
@@ -19,8 +21,6 @@ function _manually_load_environment() {
 
 	require __DIR__ . '/sample-plugin.php';
 }
-
-$loader = require __DIR__ . '/../vendor/autoload.php';
 
 define( 'WP_CORE_DIR', '/tmp/wordpress/' );
 
