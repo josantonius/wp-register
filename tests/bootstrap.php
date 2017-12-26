@@ -17,8 +17,6 @@ require __DIR__ . '/../vendor/autoload.php';
  */
 function _manually_load_environment() {
 
-	require __DIR__ . '/../vendor/autoload.php';
-
 	switch_theme( 'twentyseventeen' );
 
 	require __DIR__ . '/sample-plugin.php';
@@ -33,4 +31,3 @@ require_once WP_TESTS_DIR . '/includes/functions.php';
 tests_add_filter( 'muplugins_loaded', '_manually_load_environment' );
 
 require_once WP_TESTS_DIR . '/includes/bootstrap.php';
-
