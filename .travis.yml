@@ -51,7 +51,6 @@ matrix:
 
 before_script:
   - export PATH="./vendor/bin:$PATH"
-    fi
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source --dev
   - |
