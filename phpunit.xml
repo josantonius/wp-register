@@ -18,12 +18,12 @@
 
     <testsuites>
         <testsuite name="WP_Register Test Suite">
-            <file>tests/WP_Register/Test/UnifyFiles.php</file>
-            <file>tests/WP_Register/Test/RegisterScriptsTest.php</file>
-            <file>tests/WP_Register/Test/RegisterStylesTest.php</file>
-            <file>tests/WP_Register/Test/RegisterAdminScriptsTest.php</file>
-            <file>tests/WP_Register/Test/RegisterAdminStylesTest.php</file>
-            <file>tests/WP_Register/Test/UnifyAdminFiles.php</file>
+            <file>tests/unify/class-frontend-test.php</file>
+            <file>tests/register/class-frontend-scripts-test</file>
+            <file>tests/register/class-frontend-styles-test</file>
+            <file>tests/register/class-admin-scripts-test</file>
+            <file>tests/register/class-admin-styles-test</file>
+            <file>tests/unify/class-admin-test.php</file>
         </testsuite>
     </testsuites>
 

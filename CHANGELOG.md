@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 1.0.5 - 2017-12-26
+
+* Implemented `PHP Mess Detector` to detect inconsistencies in code styles.
+
+* Implemented `PHP Code Beautifier and Fixer` to fixing errors automatically.
+
+* Implemented `PHP Coding Standards Fixer` to organize PHP code automatically according to PSR standards.
+
+* Implemented `WordPress PHPCS code standard` from all library PHP files.
+
+* Implemented `Codacy` to automates code reviews and monitors code quality over time.
+
+* Implemented `Codecov` to coverage reports.
+
+* Deprecated `Josantonius\WP_Register\WP_Register::isAdded()` method.
+
+* Added `Josantonius\WP_Register\WP_Register::is_added()` method.
+
 ## 1.0.4 - 2017-10-06
 
 * Added functionality to minify CSS/JS content and unify files into a single file.

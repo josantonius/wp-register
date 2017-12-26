@@ -1,8 +1,9 @@
-<?php 
+<?php
 /**
  * Register, minify and unify CSS and JavaScript resources.
- * 
+ *
  * @author     Josantonius - hello@josantonius.com
+ * @package    Josantonius\WP_Register
  * @copyright  Copyright (c) 2017
  * @license    https://opensource.org/licenses/MIT - The MIT License (MIT)
  * @link       https://github.com/Josantonius/WP_Register
@@ -11,17 +12,23 @@
 
 use Josantonius\File\File;
 
-createFiles();
+create_files();
 
-function createFiles() {
+/**
+ * Create files for testing environment.
+ */
+function create_files() {
 
-	File::createDir($css = WP_CORE_DIR . 'wp-content/themes/tests/css/');
+	$css = WP_CORE_DIR . 'wp-content/themes/tests/css/';
+	$js  = WP_CORE_DIR . 'wp-content/themes/tests/js/';
 
-	File::createDir($js = WP_CORE_DIR . 'wp-content/themes/tests/js/');
+	File::createDir( $css );
+	File::createDir( $js );
 
-    if (!File::exists($css . 'editor-style.css')) {
-    	
-    	file_put_contents($css . 'editor-style.css', "
+	if ( ! File::exists( $css . 'editor-style.css' ) ) {
+
+		file_put_contents(
+			$css . 'editor-style.css', "
 			
 			body, h1, h2, h3, h4, h5, h6 {
 			 font-family: 'Open Sans', sans-serif;
@@ -31,12 +38,14 @@ function createFiles() {
 			 font-size: 1.6em;
 			 line-height: 1.6;
 			}
-    	");
-    }
+    	"
+		);
+	}
 
-    if (!File::exists($css . 'style.css')) {
-    	
-    	file_put_contents($css . 'style.css', "
+	if ( ! File::exists( $css . 'style.css' ) ) {
+
+		file_put_contents(
+			$css . 'style.css', "
 			
 			body, h1, h2, h3, h4, h5, h6 {
 			 font-family: 'Open Sans', sans-serif;
@@ -46,27 +55,32 @@ function createFiles() {
 			 font-size: 1.6em;
 			 line-height: 1.6;
 			}
-    	");
-    }
+    	"
+		);
+	}
 
-    if (!File::exists($js . 'html5.js')) {
-    	
-    	file_put_contents($js . 'html5.js', "
+	if ( ! File::exists( $js . 'html5.js' ) ) {
+
+		file_put_contents(
+			$js . 'html5.js', "
 			
 			function myFunction() {
 
 			    document.getElementById('myCheck').click();
 			}
-    	");
-    }
+    	"
+		);
+	}
 
-    if (!File::exists($js . 'navigation.js')) {
-    	
-    	file_put_contents($js . 'navigation.js', "
+	if ( ! File::exists( $js . 'navigation.js' ) ) {
+
+		file_put_contents(
+			$js . 'navigation.js', "
 			
 			$('p').click(function(){
 			    alert('The paragraph was clicked.');
 			});
-    	");
-    }
+    	"
+		);
+	}
 }

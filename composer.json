@@ -1,6 +1,5 @@
 {
     "name":        "josantonius/wp_register",
-    "version":     "1.0.4",
     "type":        "library",
     "description": "Register, minify and unify CSS and JavaScript resources.",
     "keywords": [
@@ -39,15 +38,25 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^5.6 || ^7.0",
-        "Josantonius/Json" : "^1.1.4"
+        "Josantonius/Json" : "^1.1.6"
     },
     "require-dev": {
-        "Josantonius/File": "^1.1.4"
+        "Josantonius/File": "^1.1.6",
+        "wp-coding-standards/wpcs": "^0.14",
+        "phpunit/phpunit": "^5.7 || ^6.0",
+        "squizlabs/php_codesniffer": "^3.2.2",
+        "friendsofphp/php-cs-fixer": "^2.3 || ^2.8",
+        "phpmd/phpmd": "^2.6"
     },
     "autoload": {
-        "psr-4": {
-            "Josantonius\\WP_Register\\": "src/WP_Register/"
-        }
+        "classmap": [
+            "src/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
     },
     "extra": {
         "branch-alias": {
@@ -55,6 +64,18 @@
         }
     },
     "scripts": {
-        "test": "phpunit"
+        "phpunit": "vendor/bin/phpunit --colors=always;",
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml $(find . -name '*.php');",
+        "phpmd": "vendor/bin/phpmd src,tests text ./phpmd.xml",
+        "fix": [
+            "vendor/bin/php-cs-fixer fix -v",
+            "vendor/bin/phpcbf src tests"
+        ],
+        "tests": [
+            "clear",
+            "@phpmd",
+            "@phpcs",
+            "@phpunit"
+        ]
     }
 }
