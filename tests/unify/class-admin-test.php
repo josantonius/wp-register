@@ -13,7 +13,6 @@
 namespace Josantonius\WP_Register\Test\Unify;
 
 use Josantonius\WP_Register\WP_Register;
-use Josantonius\File\File;
 
 /**
  * Tests class for WP_Register library.
@@ -338,8 +337,6 @@ final class Admin_Test extends \WP_UnitTestCase {
 		wp_deregister_script( 'UniqueID' );
 
 		wp_dequeue_script( 'UniqueID' );
-
-		File::deleteDirRecursively( $this->theme_path );
 	}
 
 	/**
