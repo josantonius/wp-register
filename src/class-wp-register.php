@@ -12,8 +12,6 @@
 
 namespace Josantonius\WP_Register;
 
-use Josantonius\Json\Json;
-
 /**
  * Register css and JavaScript resources.
  */
@@ -386,7 +384,7 @@ class WP_Register {
 	 */
 	protected static function get_processed_files() {
 
-		self::$files = Json::fileToArray( __DIR__ . '/files.jsond' );
+		self::$files = get_option( 'wp-register-files', [] );
 	}
 
 	/**
@@ -594,7 +592,7 @@ class WP_Register {
 	protected static function set_processed_files() {
 
 		if ( self::$changes ) {
-			Json::arrayToFile( self::$files, __DIR__ . '/files.jsond' );
+			update_option( 'wp-register-files', self::$files );
 		}
 	}
 

@@ -16,8 +16,6 @@ use Josantonius\WP_Register\WP_Register;
 
 /**
  * Tests class for WP_Register library.
- *
- * @since 1.0.4
  */
 final class Admin_Test extends \WP_UnitTestCase {
 
