@@ -48,10 +48,6 @@ O **instalarlo manualmente**:
 
     $ wget https://raw.githubusercontent.com/Josantonius/WP_Register/master/src/class-wp-register.php
 
-[Descargar Json.php](https://raw.githubusercontent.com/Josantonius/Json/master/src/Json.php):
-
-    $ wget https://raw.githubusercontent.com/Josantonius/Json/master/src/Json.php
-
 ## Métodos disponibles
 
 Métodos disponibles en esta biblioteca:
@@ -131,7 +127,6 @@ Si la instalaste **manualmente**, utiliza:
 
 ```php
 require_once __DIR__ . '/class-wp-register.php';
-require_once __DIR__ . '/Json.php';
 
 use Josantonius\WP_Register\WP_Register;
 ```
