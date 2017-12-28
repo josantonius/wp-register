@@ -58,11 +58,10 @@ before_script:
     fi
 
 script:
-  - phpunit --coverage-clover=coverage.xml
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
-      phpunit
-      WP_MULTISITE=1 phpunit
+      phpunit --coverage-clover=coverage.xml
+      WP_MULTISITE=1 phpunit --coverage-clover=coverage.xml
       phpcs --standard=phpcs.xml $(find . -name '*.php')
       phpmd src,tests text ./phpmd.xml
     fi
