@@ -209,8 +209,6 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_frontend_style_and_scripts_was_registered() {
 
-		$wp_register = $this->wp_register;
-
 		do_action( 'wp_enqueue_scripts' );
 
 		$this->assertTrue(
@@ -234,8 +232,6 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 * Validate whether unified files have been created.
 	 */
 	public function test_if_unified_files_was_created() {
-
-		$wp_register = $this->wp_register;
 
 		$style_one = 'editor-style.css';
 		$style_two = 'style.css';
@@ -277,8 +273,6 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_frontend_styles_and_scripts_are_enqueued() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_style_is( 'UniqueID', 'enqueued' )
 		);
@@ -301,8 +295,6 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_frontend_styles_and_scripts_are_queue() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_style_is( 'UniqueID', 'queue' )
 		);
@@ -324,8 +316,6 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 * If admin style has been printed.
 	 */
 	public function test_if_frontend_styles_and_scripts_are_done() {
-
-		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 

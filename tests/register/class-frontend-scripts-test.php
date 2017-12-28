@@ -173,8 +173,6 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_script_is_registered() {
 
-		$wp_register = $this->wp_register;
-
 		do_action( 'wp_enqueue_scripts' );
 
 		$this->assertTrue(
@@ -191,8 +189,6 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_script_is_enqueued() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_script_is( 'NavigationScript', 'enqueued' )
 		);
@@ -207,8 +203,6 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_script_is_queue() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_script_is( 'NavigationScript', 'queue' )
 		);
@@ -222,8 +216,6 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 * If front-end script has been printed.
 	 */
 	public function test_if_front_end_script_is_Done() {
-
-		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 

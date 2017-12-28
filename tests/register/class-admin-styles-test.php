@@ -172,8 +172,6 @@ final class Admin_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_style_is_registered() {
 
-		$wp_register = $this->wp_register;
-
 		do_action( 'wp_enqueue_scripts' );
 
 		$this->assertTrue(
@@ -190,8 +188,6 @@ final class Admin_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_style_is_enqueued() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_style_is( 'DefaultStyle', 'enqueued' )
 		);
@@ -206,8 +202,6 @@ final class Admin_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_style_is_queue() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_style_is( 'DefaultStyle', 'queue' )
 		);
@@ -221,8 +215,6 @@ final class Admin_Styles_Test extends \WP_UnitTestCase {
 	 * If front-end style has been printed.
 	 */
 	public function test_if_front_end_style_is_done() {
-
-		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 

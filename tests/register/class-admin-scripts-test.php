@@ -177,8 +177,6 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_script_is_registered() {
 
-		$wp_register = $this->wp_register;
-
 		do_action( 'admin_enqueue_scripts' );
 
 		$this->assertTrue(
@@ -195,8 +193,6 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_script_is_enqueued() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_script_is( 'NavigationScriptAdmin', 'enqueued' )
 		);
@@ -211,8 +207,6 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_script_is_queue() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_script_is( 'NavigationScriptAdmin', 'queue' )
 		);
@@ -226,8 +220,6 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 * If admin script has been printed.
 	 */
 	public function test_if_admin_script_is_done() {
-
-		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 

@@ -178,8 +178,6 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_style_is_registered() {
 
-		$wp_register = $this->wp_register;
-
 		do_action( 'admin_enqueue_scripts' );
 
 		$this->assertTrue(
@@ -196,8 +194,6 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_style_is_enqueued() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_style_is( 'DefaultStyleAdmin', 'enqueued' )
 		);
@@ -212,8 +208,6 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_style_is_queue() {
 
-		$wp_register = $this->wp_register;
-
 		$this->assertTrue(
 			wp_style_is( 'DefaultStyleAdmin', 'queue' )
 		);
@@ -227,8 +221,6 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 * If admin style has been printed.
 	 */
 	public function test_if_admin_style_is_done() {
-
-		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 
