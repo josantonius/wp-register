@@ -16,8 +16,6 @@ use Josantonius\WP_Register\WP_Register;
 
 /**
  * Tests class for WP_Register library.
- *
- * @since 1.0.4
  */
 final class Frontend_Styles_Test extends \WP_UnitTestCase {
 
@@ -50,14 +48,29 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	}
 
 	/**
+	 * Check if it is an instance of WP_Register.
+	 *
+	 * @since 1.0.5
+	 */
+	public function test_is_instance_of() {
+
+		$this->assertInstanceOf(
+			'Josantonius\WP_Register\WP_Register',
+			$this->wp_register
+		);
+	}
+
+	/**
 	 * Add admin style.
 	 */
 	public function test_add_admin_style() {
 
+		$wp_register = $this->wp_register;
+
 		set_current_screen( 'admin.php' );
 
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'style', [
 					'name'  => 'EditorStyleAdmin',
 					'url'   => $this->theme_url . 'css/editor-style.css',
@@ -72,8 +85,10 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_admin_style_without_name() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'style', [
 					'url'   => $this->theme_url . 'css/unknown.css',
 					'place' => 'admin',
@@ -87,8 +102,10 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_admin_style_without_url() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'style', [
 					'name'  => 'unknown',
 					'place' => 'front',
@@ -102,8 +119,10 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_frontend_style_from_admin() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'style', [
 					'name'  => 'unknown',
 					'url'   => $this->theme_url . 'css/unknown.css',
@@ -118,8 +137,10 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_admin_style_adding_all_params() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'style', [
 					'name'    => 'DefaultStyleAdmin',
 					'url'     => $this->theme_url . 'css/style.css',
@@ -137,16 +158,18 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_styles_added_correctly() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'style', 'EditorStyleAdmin' )
+			$wp_register::is_added( 'style', 'EditorStyleAdmin' )
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'style', 'unknown' )
+			$wp_register::is_added( 'style', 'unknown' )
 		);
 
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'style', 'DefaultStyleAdmin' )
+			$wp_register::is_added( 'style', 'DefaultStyleAdmin' )
 		);
 	}
 
@@ -154,6 +177,8 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 * If admin style is registered.
 	 */
 	public function test_if_admin_style_is_registered() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'admin_enqueue_scripts' );
 
@@ -171,6 +196,8 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_style_is_enqueued() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_style_is( 'DefaultStyleAdmin', 'enqueued' )
 		);
@@ -185,6 +212,8 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_style_is_queue() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_style_is( 'DefaultStyleAdmin', 'queue' )
 		);
@@ -198,6 +227,8 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 * If admin style has been printed.
 	 */
 	public function test_if_admin_style_is_done() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 
@@ -215,8 +246,10 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 */
 	public function test_remove_added_admin_styles() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::remove( 'style', 'DefaultStyleAdmin' )
+			$wp_register::remove( 'style', 'DefaultStyleAdmin' )
 		);
 
 		wp_deregister_style( 'DefaultStyleAdmin' );
@@ -224,7 +257,7 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 		wp_dequeue_style( 'DefaultStyleAdmin' );
 
 		$this->assertTrue(
-			$this->wp_register::remove( 'style', 'EditorStyleAdmin' )
+			$wp_register::remove( 'style', 'EditorStyleAdmin' )
 		);
 
 		wp_deregister_style( 'EditorStyleAdmin' );
@@ -236,6 +269,8 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 	 * Validation after deletion.
 	 */
 	public function test_validation_after_deletion() {
+
+		$wp_register = $this->wp_register;
 
 		$this->assertFalse(
 			wp_style_is( 'DefaultStyleAdmin', 'queue' )
@@ -262,11 +297,11 @@ final class Frontend_Styles_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'style', 'DefaultStyleAdmin' )
+			$wp_register::is_added( 'style', 'DefaultStyleAdmin' )
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'style', 'EditorStyleAdmin' )
+			$wp_register::is_added( 'style', 'EditorStyleAdmin' )
 		);
 	}
 }

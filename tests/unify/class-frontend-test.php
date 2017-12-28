@@ -16,8 +16,6 @@ use Josantonius\WP_Register\WP_Register;
 
 /**
  * Tests class for WP_Register library.
- *
- * @since 1.0.4
  */
 final class Frontend_Test extends \WP_UnitTestCase {
 
@@ -49,12 +47,27 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	}
 
 	/**
+	 * Check if it is an instance of WP_Register.
+	 *
+	 * @since 1.0.5
+	 */
+	public function test_is_instance_of() {
+
+		$this->assertInstanceOf(
+			'Josantonius\WP_Register\WP_Register',
+			$this->wp_register
+		);
+	}
+
+	/**
 	 * Unify files specifying the same url path for styles and scripts.
 	 */
 	public function test_unify() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::unify( 'UniqueID', $this->theme_url . 'min/' )
+			$wp_register::unify( 'UniqueID', $this->theme_url . 'min/' )
 		);
 	}
 
@@ -63,8 +76,10 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_unify_specifying_different_url_paths() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::unify(
+			$wp_register::unify(
 				'UniqueID', [
 					'styles'  => $this->theme_url . 'min/css/',
 					'scripts' => $this->theme_url . 'min/js/',
@@ -78,8 +93,10 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_unify_and_minify() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::unify( 'UniqueID', $this->theme_url . 'min/', true )
+			$wp_register::unify( 'UniqueID', $this->theme_url . 'min/', true )
 		);
 	}
 
@@ -88,8 +105,10 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_unify_and_minify_specifying_different_url_paths() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::unify(
+			$wp_register::unify(
 				'UniqueID', [
 					'styles'  => $this->theme_url . 'min/css/',
 					'scripts' => $this->theme_url . 'min/js/',
@@ -104,8 +123,10 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_frontend_styles_and_scripts() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'style', [
 					'name'    => 'EditorStyle',
 					'url'     => $this->theme_url . 'css/editor-style.css',
@@ -118,7 +139,7 @@ final class Frontend_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'style', [
 					'name'    => 'DefaultStyle',
 					'url'     => $this->theme_url . 'css/style.css',
@@ -131,7 +152,7 @@ final class Frontend_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'    => 'HTML_script',
 					'url'     => $this->theme_url . 'js/html5.js',
@@ -145,7 +166,7 @@ final class Frontend_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'    => 'NavigationScript',
 					'url'     => $this->theme_url . 'js/navigation.js',
@@ -164,20 +185,22 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_frontend_styles_and_scripts_added_correctly() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'style', 'EditorStyle' )
+			$wp_register::isAdded( 'style', 'EditorStyle' )
 		);
 
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'style', 'DefaultStyle' )
+			$wp_register::isAdded( 'style', 'DefaultStyle' )
 		);
 
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'script', 'HTML_script' )
+			$wp_register::isAdded( 'script', 'HTML_script' )
 		);
 
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'script', 'NavigationScript' )
+			$wp_register::isAdded( 'script', 'NavigationScript' )
 		);
 	}
 
@@ -185,6 +208,8 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 * If admin style is registered.
 	 */
 	public function test_if_frontend_style_and_scripts_was_registered() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'wp_enqueue_scripts' );
 
@@ -209,6 +234,8 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 * Validate whether unified files have been created.
 	 */
 	public function test_if_unified_files_was_created() {
+
+		$wp_register = $this->wp_register;
 
 		$style_one = 'editor-style.css';
 		$style_two = 'style.css';
@@ -250,6 +277,8 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_frontend_styles_and_scripts_are_enqueued() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_style_is( 'UniqueID', 'enqueued' )
 		);
@@ -272,6 +301,8 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_frontend_styles_and_scripts_are_queue() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_style_is( 'UniqueID', 'queue' )
 		);
@@ -293,6 +324,8 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 * If admin style has been printed.
 	 */
 	public function test_if_frontend_styles_and_scripts_are_done() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 
@@ -318,10 +351,12 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 */
 	public function test_remove_added_frontend_styles_and_scripts() {
 
-		$this->wp_register::unify( 'UniqueID', false );
+		$wp_register = $this->wp_register;
+
+		$wp_register::unify( 'UniqueID', false );
 
 		$this->assertTrue(
-			$this->wp_register::remove( 'style', 'UniqueID' )
+			$wp_register::remove( 'style', 'UniqueID' )
 		);
 
 		wp_deregister_style( 'UniqueID' );
@@ -329,7 +364,7 @@ final class Frontend_Test extends \WP_UnitTestCase {
 		wp_dequeue_style( 'UniqueID' );
 
 		$this->assertTrue(
-			$this->wp_register::remove( 'script', 'UniqueID' )
+			$wp_register::remove( 'script', 'UniqueID' )
 		);
 
 		wp_deregister_script( 'UniqueID' );
@@ -341,6 +376,8 @@ final class Frontend_Test extends \WP_UnitTestCase {
 	 * Validation after deletion.
 	 */
 	public function test_validation_after_deletion() {
+
+		$wp_register = $this->wp_register;
 
 		$this->assertFalse(
 			wp_style_is( 'UniqueID', 'queue' )
@@ -355,7 +392,7 @@ final class Frontend_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'style', 'UniqueID' )
+			$wp_register::isAdded( 'style', 'UniqueID' )
 		);
 
 		$this->assertFalse(
@@ -371,7 +408,7 @@ final class Frontend_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'script', 'UniqueID' )
+			$wp_register::isAdded( 'script', 'UniqueID' )
 		);
 	}
 }

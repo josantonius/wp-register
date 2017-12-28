@@ -16,8 +16,6 @@ use Josantonius\WP_Register\WP_Register;
 
 /**
  * Tests class for WP_Register library.
- *
- * @since 1.0.4
  */
 final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 
@@ -48,12 +46,27 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	}
 
 	/**
+	 * Check if it is an instance of WP_Register.
+	 *
+	 * @since 1.0.5
+	 */
+	public function test_is_instance_of() {
+
+		$this->assertInstanceOf(
+			'Josantonius\WP_Register\WP_Register',
+			$this->wp_register
+		);
+	}
+
+	/**
 	 * Add front-end script.
 	 */
 	public function test_add_frontend_script() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name' => 'HTML_script',
 					'url'  => $this->theme_url . 'js/html5.js',
@@ -67,8 +80,10 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_frontend_script_without_name() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'url'   => $this->theme_url . 'js/unknown.js',
 					'place' => 'front',
@@ -82,8 +97,10 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_frontend_script_without_url() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'  => 'unknown',
 					'place' => 'front',
@@ -97,8 +114,10 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_admin_script_from_frontend() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'  => 'unknown',
 					'url'   => $this->theme_url . 'js/unknown.js',
@@ -113,8 +132,10 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_frontend_script_adding_all_params() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'    => 'NavigationScript',
 					'url'     => $this->theme_url . 'js/navigation.js',
@@ -133,22 +154,26 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_script_is_added_correctly() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'script', 'HTML_script' )
+			$wp_register::is_added( 'script', 'HTML_script' )
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'script', 'unknown' )
+			$wp_register::is_added( 'script', 'unknown' )
 		);
 
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'script', 'NavigationScript' )
+			$wp_register::is_added( 'script', 'NavigationScript' )
 		);
 	}
 	/**
 	 * If front-end script is registered.
 	 */
 	public function test_if_front_end_script_is_registered() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'wp_enqueue_scripts' );
 
@@ -166,6 +191,8 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_script_is_enqueued() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_script_is( 'NavigationScript', 'enqueued' )
 		);
@@ -180,6 +207,8 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_front_end_script_is_queue() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_script_is( 'NavigationScript', 'queue' )
 		);
@@ -193,6 +222,8 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 * If front-end script has been printed.
 	 */
 	public function test_if_front_end_script_is_Done() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 
@@ -210,8 +241,10 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_remove_added_frontend_scripts() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::remove( 'script', 'NavigationScript' )
+			$wp_register::remove( 'script', 'NavigationScript' )
 		);
 
 		wp_deregister_script( 'NavigationScript' );
@@ -219,7 +252,7 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 		wp_dequeue_script( 'NavigationScript' );
 
 		$this->assertTrue(
-			$this->wp_register::remove( 'script', 'HTML_script' )
+			$wp_register::remove( 'script', 'HTML_script' )
 		);
 
 		wp_deregister_script( 'HTML_script' );
@@ -231,6 +264,8 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 	 * Validation after deletion.
 	 */
 	public function test_validation_after_deletion() {
+
+		$wp_register = $this->wp_register;
 
 		$this->assertFalse(
 			wp_script_is( 'NavigationScript', 'queue' )
@@ -257,11 +292,11 @@ final class Frontend_Scripts_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'script', 'NavigationScript' )
+			$wp_register::is_added( 'script', 'NavigationScript' )
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'script', 'HTML_script' )
+			$wp_register::is_added( 'script', 'HTML_script' )
 		);
 	}
 }

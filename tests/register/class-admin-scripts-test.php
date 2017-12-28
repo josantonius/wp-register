@@ -16,8 +16,6 @@ use Josantonius\WP_Register\WP_Register;
 
 /**
  * Tests class for WP_Register library.
- *
- * @since 1.0.4
  */
 final class Admin_Scripts_Test extends \WP_UnitTestCase {
 
@@ -50,12 +48,27 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	}
 
 	/**
+	 * Check if it is an instance of WP_Register.
+	 *
+	 * @since 1.0.5
+	 */
+	public function test_is_instance_of() {
+
+		$this->assertInstanceOf(
+			'Josantonius\WP_Register\WP_Register',
+			$this->wp_register
+		);
+	}
+
+	/**
 	 * Add admin script.
 	 */
 	public function test_add_admin_script() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'  => 'HTML_scriptAdmin',
 					'url'   => $this->theme_url . 'js/html5.js',
@@ -70,8 +83,10 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_admin_script_without_name() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'url'   => $this->theme_url . 'js/unknown.js',
 					'place' => 'admin',
@@ -85,8 +100,10 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_admin_script_without_url() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'  => 'unknown',
 					'place' => 'front',
@@ -100,8 +117,10 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_frontend_script_from_admin() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertFalse(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'  => 'unknown',
 					'url'   => $this->theme_url . 'js/unknown.js',
@@ -116,8 +135,10 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_add_admin_script_adding_all_params() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::add(
+			$wp_register::add(
 				'script', [
 					'name'    => 'NavigationScriptAdmin',
 					'url'     => $this->theme_url . 'js/navigation.js',
@@ -136,16 +157,18 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_scripts_added_correctly() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'script', 'HTML_scriptAdmin' )
+			$wp_register::is_added( 'script', 'HTML_scriptAdmin' )
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'script', 'unknown' )
+			$wp_register::is_added( 'script', 'unknown' )
 		);
 
 		$this->assertTrue(
-			$this->wp_register::isAdded( 'script', 'NavigationScriptAdmin' )
+			$wp_register::is_added( 'script', 'NavigationScriptAdmin' )
 		);
 	}
 
@@ -153,6 +176,8 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 * If admin script is registered.
 	 */
 	public function test_if_admin_script_is_registered() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'admin_enqueue_scripts' );
 
@@ -170,6 +195,8 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_script_is_enqueued() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_script_is( 'NavigationScriptAdmin', 'enqueued' )
 		);
@@ -184,6 +211,8 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_if_admin_script_is_queue() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
 			wp_script_is( 'NavigationScriptAdmin', 'queue' )
 		);
@@ -197,6 +226,8 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 * If admin script has been printed.
 	 */
 	public function test_if_admin_script_is_done() {
+
+		$wp_register = $this->wp_register;
 
 		do_action( 'wp_print_footer_scripts' );
 
@@ -214,8 +245,10 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 */
 	public function test_remove_added_admin_scripts() {
 
+		$wp_register = $this->wp_register;
+
 		$this->assertTrue(
-			$this->wp_register::remove( 'script', 'NavigationScriptAdmin' )
+			$wp_register::remove( 'script', 'NavigationScriptAdmin' )
 		);
 
 		wp_deregister_script( 'NavigationScriptAdmin' );
@@ -223,7 +256,7 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 		wp_dequeue_script( 'NavigationScriptAdmin' );
 
 		$this->assertTrue(
-			$this->wp_register::remove( 'script', 'HTML_scriptAdmin' )
+			$wp_register::remove( 'script', 'HTML_scriptAdmin' )
 		);
 
 		wp_deregister_script( 'HTML_scriptAdmin' );
@@ -235,6 +268,8 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 	 * Validation after deletion.
 	 */
 	public function test_validation_after_deletion() {
+
+		$wp_register = $this->wp_register;
 
 		$this->assertFalse(
 			wp_script_is( 'NavigationScriptAdmin', 'queue' )
@@ -261,11 +296,11 @@ final class Admin_Scripts_Test extends \WP_UnitTestCase {
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'script', 'NavigationScriptAdmin' )
+			$wp_register::is_added( 'script', 'NavigationScriptAdmin' )
 		);
 
 		$this->assertFalse(
-			$this->wp_register::isAdded( 'script', 'HTML_scriptAdmin' )
+			$wp_register::is_added( 'script', 'HTML_scriptAdmin' )
 		);
 	}
 }
