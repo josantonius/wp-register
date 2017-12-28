@@ -37,11 +37,9 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": "^5.6 || ^7.0",
-        "Josantonius/Json" : "^1.1.6"
+        "php": "^5.6 || ^7.0"
     },
     "require-dev": {
-        "Josantonius/File": "^1.1.6",
         "wp-coding-standards/wpcs": "^0.14",
         "phpunit/phpunit": "^5.7 || ^6.0",
         "squizlabs/php_codesniffer": "^3.2.2",

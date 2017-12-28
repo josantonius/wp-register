@@ -25,8 +25,6 @@ return array(
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PhpCsFixer\\' => array($vendorDir . '/friendsofphp/php-cs-fixer/src'),
     'PDepend\\' => array($vendorDir . '/pdepend/pdepend/src/main/php/PDepend'),
-    'Josantonius\\Json\\' => array($vendorDir . '/josantonius/json/src'),
-    'Josantonius\\File\\' => array($vendorDir . '/josantonius/file/src'),
     'GeckoPackages\\PHPUnit\\' => array($vendorDir . '/gecko-packages/gecko-php-unit/src/PHPUnit'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations'),
