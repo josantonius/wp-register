@@ -74,7 +74,7 @@ WP_Register::add($type, $data);
 |  | params | **Only for scripts** - Params available in JS | array | Yes | [] |
 |  | media | **Only for styles** - Media | string | No | '' |
 
-**@return** → boolean
+**@return** (boolean)
 
 ### - Sets whether to merge the content of files into a single file:
 
@@ -88,7 +88,7 @@ WP_Register::unify($id, $params, $minify);
 | $params | Path urls | mixed | Yes | |
 | $minify | Minimize file content | boolean | No | false |
 
-**@return** → boolean true
+**@return** (boolean true)
 
 ### - Check if a particular style or script has been added to be enqueued:
 
@@ -101,7 +101,7 @@ WP_Register::is_added($type, $name);
 | $type | 'script' or 'style' | string | Yes | |
 | $name | Script or style ID | string | Yes | |
 
-**@return** → boolean 
+**@return** (boolean) 
 
 ### - Remove before script or style have been registered:
 
@@ -114,7 +114,7 @@ WP_Register::remove($type, $name);
 | $type | 'script' or 'style' | string | Yes | |
 | $name | Script or style ID | string | Yes | |
 
-**@return** → boolean true
+**@return** (boolean true)
 
 ## Quick Start
 
@@ -310,7 +310,7 @@ This project is licensed under **MIT license**. See the [LICENSE](LICENSE) file 
 
 ## Copyright
 
-2017 Josantonius, [josantonius.com](https://josantonius.com/)
+2017 - 2018 Josantonius, [josantonius.com](https://josantonius.com/)
 
 If you find it useful, let me know :wink:
 

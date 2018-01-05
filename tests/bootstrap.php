@@ -2,12 +2,12 @@
 /**
  * Register, minify and unify CSS and JavaScript resources.
  *
- * @author     Josantonius - hello@josantonius.com
- * @package    Josantonius\WP_Register
- * @copyright  Copyright (c) 2017
- * @license    https://opensource.org/licenses/MIT - The MIT License (MIT)
- * @link       https://github.com/Josantonius/WP_Register
- * @since      1.0.4
+ * @author    Josantonius <hello@josantonius.com>
+ * @package   Josantonius\WP_Register
+ * @copyright 2017 - 2018 (c) Josantonius - WP_Register
+ * @license   https://opensource.org/licenses/MIT - The MIT License (MIT)
+ * @link      https://github.com/Josantonius/WP_Register
+ * @since     1.0.4
  */
 
 require __DIR__ . '/../vendor/autoload.php';
