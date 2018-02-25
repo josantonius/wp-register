@@ -21,11 +21,11 @@ function create_files() {
 	$js  = WP_CORE_DIR . 'wp-content/themes/tests/js/';
 
 	if ( ! is_dir( $css ) ) {
-		@mkdir( $css, 0777, true );
+		mkdir( $css, 0777, true );
 	}
 
 	if ( ! is_dir( $js ) ) {
-		@mkdir( $js, 0777, true );
+		mkdir( $js, 0777, true );
 	}
 
 	if ( ! file_exists( $css . 'editor-style.css' ) ) {
