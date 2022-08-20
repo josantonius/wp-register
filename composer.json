@@ -1,6 +1,6 @@
 {
-    "name":        "josantonius/wp_register",
-    "type":        "library",
+    "name": "josantonius/wp-register",
+    "type": "library",
     "description": "Register, minify and unify CSS and JavaScript resources.",
     "keywords": [
         "WordPress",
@@ -21,16 +21,16 @@
     "license": "MIT",
     "authors": [
         {
-            "name":     "Josantonius",
-            "email":    "hello@josantonius.com",
-            "homepage": "https://josantonius.com",
-            "role":     "Developer"
+            "name": "Josantonius",
+            "email": "hello@josantonius.dev",
+            "homepage": "https://josantonius.dev",
+            "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/josantonius/wp_register/issues",
-        "forum":  "http://stackoverflow.com/tags/josantonius/wp_register",
-        "source": "https://github.com/josantonius/wp_register"
+        "issues": "https://github.com/josantonius/wp-register/issues",
+        "forum": "http://stackoverflow.com/tags/josantonius/wp-register",
+        "source": "https://github.com/josantonius/wp-register"
     },
     "config": {
         "preferred-install": "dist"

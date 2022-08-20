@@ -1,6 +1,7 @@
 # PHP WordPress Register
 
-[![Latest Stable Version](https://poser.pugx.org/josantonius/WP_Register/v/stable)](https://packagist.org/packages/josantonius/WP_Register) [![Latest Unstable Version](https://poser.pugx.org/josantonius/WP_Register/v/unstable)](https://packagist.org/packages/josantonius/WP_Register) [![License](https://poser.pugx.org/josantonius/WP_Register/license)](LICENSE) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ab4c47e60ada48b39c712c85a1a59322)](https://www.codacy.com/app/Josantonius/WP_Register?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Josantonius/WP_Register&amp;utm_campaign=Badge_Grade) [![Total Downloads](https://poser.pugx.org/josantonius/WP_Register/downloads)](https://packagist.org/packages/josantonius/WP_Register) [![Travis](https://travis-ci.org/Josantonius/WP_Register.svg)](https://travis-ci.org/Josantonius/WP_Register) [![WP](https://img.shields.io/badge/WordPress-Standar-1abc9c.svg)](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/) [![CodeCov](https://codecov.io/gh/Josantonius/WP_Register/branch/master/graph/badge.svg)](https://codecov.io/gh/Josantonius/WP_Register)
+[![Latest Stable Version](https://poser.pugx.org/josantonius/wp-register/v/stable)](https://packagist.org/packages/josantonius/wp-register)
+[![License](https://poser.pugx.org/josantonius/wp-register/license)](LICENSE)
 
 [English version](README.md)
 
@@ -14,11 +15,8 @@ Registrar, minificar y unificar recursos CSS y JavaScript en WordPress.
 - [Cómo empezar](#cómo-empezar)
 - [Uso](#uso)
 - [Tests](#tests)
-- [Tareas pendientes](#-tareas-pendientes)
-- [Contribuir](#contribuir)
-- [Repositorio](#repositorio)
+- [Patrocinar](#patrocinar)
 - [Licencia](#licencia)
-- [Copyright](#copyright)
 
 ---
 
@@ -26,33 +24,33 @@ Registrar, minificar y unificar recursos CSS y JavaScript en WordPress.
 
 Esta biblioteca es soportada por versiones de **PHP 5.6** o superiores y es compatible con versiones de **HHVM 3.0** o superiores.
 
-## Instalación 
+## Instalación
 
 La mejor forma de instalar esta extensión es a través de [Composer](http://getcomposer.org/download/).
 
 Para instalar **PHP WP_Register library**, simplemente escribe:
 
-    $ composer require Josantonius/WP_Register
+    composer require josantonius/wp-register
 
 El comando anterior sólo instalará los archivos necesarios, si prefieres **descargar todo el código fuente** puedes utilizar:
 
-    $ composer require Josantonius/WP_Register --prefer-source
+    composer require josantonius/wp-register --prefer-source
 
 También puedes **clonar el repositorio** completo con Git:
 
-    $ git clone https://github.com/Josantonius/WP_Register.git
+    git clone https://github.com/josantonius/wp-register.git
 
 O **instalarlo manualmente**:
 
-[Download WP_Register.php](https://raw.githubusercontent.com/Josantonius/WP_Register/master/src/class-wp-register.php):
+[Download WP_Register.php](https://raw.githubusercontent.com/josantonius/wp-register/master/src/class-wp-register.php):
 
-    $ wget https://raw.githubusercontent.com/Josantonius/WP_Register/master/src/class-wp-register.php
+    wget https://raw.githubusercontent.com/josantonius/wp-register/master/src/class-wp-register.php
 
 ## Métodos disponibles
 
 Métodos disponibles en esta biblioteca:
 
-### - Agregar scripts o estilos:
+### - Agregar scripts o estilos
 
 ```php
 WP_Register::add($type, $data);
@@ -73,7 +71,7 @@ WP_Register::add($type, $data);
 
 **@return** → boolean
 
-### - Establecer si se fusiona el contenido de los archivos en un único archivo:
+### - Establecer si se fusiona el contenido de los archivos en un único archivo
 
 ```php
 WP_Register::unify($id, $params, $minify);
@@ -87,7 +85,7 @@ WP_Register::unify($id, $params, $minify);
 
 **@return** → boolean true
 
-### - Comprobar si se ha añadido un estilo o script concreto a la cola:
+### - Comprobar si se ha añadido un estilo o script concreto a la cola
 
 ```php
 WP_Register::is_added($type, $name);
@@ -98,9 +96,9 @@ WP_Register::is_added($type, $name);
 | $type | 'script' or 'style' | string | Yes | |
 | $name | Script or style ID | string | Yes | |
 
-**@return** → boolean 
+**@return** → boolean
 
-### - Eliminar antes de que se haya registrado el script o el estilo:
+### - Eliminar antes de que se haya registrado el script o el estilo
 
 ```php
 WP_Register::is_added($type, $name);
@@ -135,7 +133,7 @@ use Josantonius\WP_Register\WP_Register;
 
 Ejemplo de uso para esta biblioteca:
 
-### - Agregar script:
+### - Agregar script
 
 ```php
 WP_Register::add('script', [
@@ -164,7 +162,7 @@ Adicionalmente se crea un nonce para cada script utilizando su nombre. En este e
 
 En el caso de scripts creados desde plugins se guarda como parámetro la ruta del directorio de plugins. En este ejemplo, seríá accesible desde JavaScript utilizando `NavigationScript.pluginUrl`.
 
-### - Agregar estilo:
+### - Agregar estilo
 
 ```php
 WP_Register::add('style', [
@@ -186,19 +184,19 @@ WP_Register::add('style', [
 ])
 ```
 
-### - Unificar:
+### - Unificar
 
 ```php
 WP_Register::unify('UniqueID', 'http://josantonius.com/min/');
 ```
 
-### - Unificar y minimizar:
+### - Unificar y minimizar
 
 ```php
 WP_Register::unify('UniqueID', 'http://josantonius.com/min/', true);
 ```
 
-### - Unificar especificando diferentes urls para las rutas donde se guardarán los estilos y los scripts:
+### - Unificar especificando diferentes urls para las rutas donde se guardarán los estilos y los scripts
 
 ```php
 WP_Register::unify('UniqueID', [
@@ -208,7 +206,7 @@ WP_Register::unify('UniqueID', [
 ]);
 ```
 
-### - Unificar y minimizar especificando diferentes urls para las rutas donde se guardarán los estilos y los scripts:
+### - Unificar y minimizar especificando diferentes urls para las rutas donde se guardarán los estilos y los scripts
 
 ```php
 WP_Register::unify('UniqueID', [
@@ -219,7 +217,7 @@ WP_Register::unify('UniqueID', [
 ], true);
 ```
 
-### - Comprueba si un estilo o script ha sido añadido para ser registrado:
+### - Comprueba si un estilo o script ha sido añadido para ser registrado
 
 ```php
 
@@ -232,7 +230,7 @@ WP_Register::is_added('style', 'EditorStyle');
 WP_Register::is_added('style', 'DefaultStyle');
 ```
 
-### - Eliminar antes de que el script o el estilo hayan sido añadidos a la cola:
+### - Eliminar antes de que el script o el estilo hayan sido añadidos a la cola
 
 ```php
 
@@ -245,68 +243,40 @@ WP_Register::remove('style', 'EditorStyle');
 WP_Register::remove('style', 'DefaultStyle');
 ```
 
-## Tests 
+## Tests
 
 Para ejecutar las [pruebas](tests) necesitarás [Composer](http://getcomposer.org/download/) y seguir los siguientes pasos:
 
-    $ git clone https://github.com/Josantonius/WP_Register.git
+    git clone https://github.com/josantonius/wp-register.git
     
-    $ cd WP_Register
+    cd WP_Register
 
-    $ composer install
+    composer install
 
 Ejecutar pruebas unitarias con [PHPUnit](https://phpunit.de/):
 
-    $ composer phpunit
+    composer phpunit
 
 Ejecutar pruebas de estándares de código para [WordPress](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/) con [PHPCS](https://github.com/squizlabs/PHP_CodeSniffer):
 
-    $ composer phpcs
+    composer phpcs
 
 Ejecutar pruebas con [PHP Mess Detector](https://phpmd.org/) para detectar inconsistencias en el estilo de codificación:
 
-    $ composer phpmd
+    composer phpmd
 
 Ejecutar todas las pruebas anteriores:
 
-    $ composer tests
+    composer tests
 
-## ☑ Tareas pendientes
+## Patrocinar
 
-- [ ] Implementar recolector de basura en archivos unificados.
-- [ ] Ordenar dependencias al unificar parámetros.
-- [ ] Añadir nueva funcionalidad.
-- [ ] Mejorar pruebas.
-- [ ] Mejorar documentación.
-- [ ] Refactorizar código para las reglas de estilo de código deshabilitadas. Ver [phpmd.xml](phpmd.xml) y [.php_cs.dist](.php_cs.dist).
-
-## Contribuir
-
-Si deseas colaborar, puedes echar un vistazo a la lista de
-[issues](https://github.com/Josantonius/WP_Register/issues) o [tareas pendientes](#-tareas-pendientes).
-
-**Pull requests**
-
-* [Fork and clone](https://help.github.com/articles/fork-a-repo).
-* Ejecuta el comando `composer install` para instalar dependencias.
-  Esto también instalará las [dependencias de desarrollo](https://getcomposer.org/doc/03-cli.md#install).
-* Ejecuta el comando `composer fix` para estandarizar el código.
-* Ejecuta las [pruebas](#tests).
-* Crea una nueva rama (**branch**), **commit**, **push** y envíame un
-  [pull request](https://help.github.com/articles/using-pull-requests).
-
-## Repositorio
-
-La estructura de archivos de este repositorio se creó con [PHP-Skeleton](https://github.com/Josantonius/PHP-Skeleton).
+Si este proyecto te ayuda a reducir el tiempo de desarrollo,
+[puedes patrocinarme](https://github.com/josantonius/lang/es-ES/README.md#patrocinar)
+para apoyar mi trabajo :blush:
 
 ## Licencia
 
-Este proyecto está licenciado bajo **licencia MIT**. Consulta el archivo [LICENSE](LICENSE) para más información.
+Este repositorio tiene una licencia [MIT License](LICENSE).
 
-## Copyright
-
-2017 - 2018 Josantonius, [josantonius.com](https://josantonius.com/)
-
-Si te ha resultado útil, házmelo saber :wink:
-
-Puedes contactarme en [Twitter](https://twitter.com/Josantonius) o a través de mi [correo electrónico](mailto:hello@josantonius.com).
+Copyright © 2017-2022, [Josantonius](https://github.com/josantonius/lang/es-ES/README.md#contacto)
